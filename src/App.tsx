@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import Home from './Components/Home/Home';
 import Landing from './Components/Landing/Landing';
 import {
   useNavigate,
@@ -25,7 +24,6 @@ const App: React.FC = () => {
       <div className="App">
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route path='/home' element={<Home />} />
         </Routes>
       </div>
   );

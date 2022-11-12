@@ -1,9 +1,15 @@
 import React from 'react'
 
-const Home: React.FC = () => {
+export type HomeProps = {
+    AddExample: React.FC
+}
+
+const Home: React.FC<HomeProps> = (props) => {
+    const {AddExample} = props
     return (
         <div>
             Home
+            <AddExample />
         </div>
     )
 }
