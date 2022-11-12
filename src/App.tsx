@@ -6,16 +6,21 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import { useAuthIdToken } from '@react-query-firebase/auth';
+import { auth } from './fbConfig/fbConfig.';
 
 const App: React.FC = () => {
   let navigate = useNavigate();
-  useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token')
+  const tokenResult = useAuthIdToken(["token"], auth);
 
-    if (authToken) {
-      navigate('/home')
+  useEffect(() => {
+    // ensures userAuth or reroutes to landing
+    if (tokenResult.data?.token.token === undefined) {
+      navigate('/')
     }
-  }, [navigate])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenResult.isLoading, navigate])
+
   return (
       <div className="App">
         <Routes>

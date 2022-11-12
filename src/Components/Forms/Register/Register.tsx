@@ -1,20 +1,14 @@
 import React, { useState } from 'react'
-import {
-    useNavigate
-  } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../../../fbConfig/fbConfig.';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../fbConfig/fbConfig.';
 
 const Register: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let navigate = useNavigate();
 
     const handleClick = () => {
-        const authentication = getAuth(app);
-        createUserWithEmailAndPassword(authentication, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then((response: any) => {
-          navigate('/home')
           console.log(response)
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })

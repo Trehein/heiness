@@ -1,21 +1,15 @@
 import React, { useState } from 'react'
-import {
-    useNavigate
-  } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../../../fbConfig/fbConfig.';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../fbConfig/fbConfig.';
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let navigate = useNavigate();
+
     const handleClick = () => {
-        const authentication = getAuth(app);
-        signInWithEmailAndPassword(authentication, email, password)
+        signInWithEmailAndPassword(auth, email, password)
           .then((response) => {
-            navigate('/home')
-            console.log(response)
-            // sessionStorage.setItem('Auth Token', response.user.getIdToken())
+            console.log('logged in')
           })
           .catch((error) => {
             console.log(error.code)
