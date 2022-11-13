@@ -1,7 +1,9 @@
 import React from 'react'
+import UnitList from '../Units/UnitList'
 
 export type HomeProps = {
-    AddExample: React.FC
+    AddExample: React.FC,
+    UnitList: React.FC
 }
 
 const Home: React.FC<HomeProps> = (props) => {
@@ -10,6 +12,7 @@ const Home: React.FC<HomeProps> = (props) => {
         <div>
             Home
             <AddExample />
+            <UnitList />
         </div>
     )
 }

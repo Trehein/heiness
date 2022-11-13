@@ -5,6 +5,7 @@ import FormSwitch from '../Forms/FormSwitch'
 import { useAuthIdToken } from "@react-query-firebase/auth";
 import Home from '../Home/Home';
 import AddExample from '../AddExample/AddExample';
+import UnitList from '../Units/UnitList';
 
 const Landing: React.FC = () => {
     // const userQuery = useAuthUser(['user'], auth)
@@ -15,7 +16,12 @@ const Landing: React.FC = () => {
     
     return (
         <div>
-            {tokenResult.data?.token.token && <Home AddExample={AddExample}/>}
+            {tokenResult.data?.token.token && 
+                <Home 
+                    AddExample={AddExample}
+                    UnitList={UnitList}
+                />
+            }
             {tokenResult.data?.token.token === undefined && 
                 <>
                     {
