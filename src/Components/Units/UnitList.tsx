@@ -3,37 +3,35 @@ import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import {
   query,
   collection,
-  QuerySnapshot,
-  DocumentData,
 } from "firebase/firestore";
 import { firestore } from '../../fbConfig/fbConfig.';
-
+import UnitCard from './UnitCard';
 
 const UnitList: React.FC = () => {
   // Define a query reference using the Firebase SDK
   const ref = query(collection(firestore, "units"));
-
-  // Provide the query to the hook
-//   const collectionQuery = useFirestoreQuery(["units"], ref);
   const collectionQuery = useFirestoreQuery(["units"], ref, {
     subscribe: true,
   });
+  const snapshot = collectionQuery.data
 
-    const snapshot = collectionQuery.data
+  return (
+      <>
+          { 
+              snapshot !== undefined &&
+              snapshot.docs.map((docSnapshot) => {
+                  const data = docSnapshot.data();
 
-    console.log('snapshot', snapshot?.docs[0].data())
-
-    return (
-        <>
-            { 
-                snapshot !== undefined &&
-                snapshot.docs.map((docSnapshot) => {
-                    const data = docSnapshot.data();
-                    return <div key={docSnapshot.id}>{data.name}</div>
-                })
-            }
-        </>
-    )
+                  return( 
+                    <UnitCard
+                      key={docSnapshot.id} 
+                      unitData={data} 
+                      id={docSnapshot.id}
+                    />)
+              })
+          }
+      </>
+  )
 }
 
 export default UnitList
