@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../fbConfig/fbConfig.';
+import { formStyles } from '../formStyles';
 
 const SignIn: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const formClasses = formStyles()
 
     const handleClick = () => {
         signInWithEmailAndPassword(auth, email, password)
@@ -31,11 +33,27 @@ const SignIn: React.FC = () => {
     }
 
     return (
-        <div>
+        <div style={formClasses.formContainer}>
+          <label>Email</label>
+          <input
+            style={formClasses.formTextInput}
+            type="email" 
+            value={email} 
+            onChange={(e) => handleEmailChange(e)}
+          />
+          <label>Password</label>
+          <input
+            style={formClasses.formTextInput}
+            type="password" 
+            value={password} 
+            onChange={(e) => handlePasswordChange(e)}
+          />
+          <button
+            style={formClasses.formSubmitButton}
+            onClick={handleClick}
+          >
             Sign In
-            <input type="email" value={email} onChange={(e) => handleEmailChange(e)}/>
-            <input type="password" value={password} onChange={(e) => handlePasswordChange(e)}/>
-            <button onClick={handleClick}>Click to Sign In</button>
+          </button>
         </div>
     )
 }

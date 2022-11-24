@@ -21,7 +21,7 @@ const App: React.FC = () => {
   }, [tokenResult.isLoading, navigate])
 
   return (
-      <div className="App">
+      <div className="App" style={{fontFamily: 'sans-serif'}}>
         <Routes>
           <Route path='/' element={<Landing />} />
         </Routes>

@@ -1,13 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { auth } from '../../fbConfig/fbConfig.'
-import { FormTypeEnum } from '../Forms/Enums/FormTypeEnum'
-import FormSwitch from '../Forms/FormSwitch'
 import { useAuthIdToken } from "@react-query-firebase/auth";
 import Home from '../Home/Home';
 import AddExample from '../AddExample/AddExample';
 import UnitList from '../Units/UnitList';
-import BoxArray from '../BoxArray/BoxArray';
-import { MapToBoxButtonArray } from '../../ComponentArrays/MapToBoxButtonArray/MapToBoxButtonArray';
+import Authentication from '../Authentication/Authentication';
 
 const Landing: React.FC = () => {
     // grab user info if necessary
@@ -15,23 +12,9 @@ const Landing: React.FC = () => {
     // const user = userQuery.data;
 
     const tokenResult = useAuthIdToken(["token"], auth);
-    const [selectedFormType, setSelectedFormType] = useState<undefined | FormTypeEnum>(undefined)
-    
-    const authButtonData: any[] = [
-        {
-            label: 'Sign In Button',
-            onClick: () => {setSelectedFormType(FormTypeEnum.SignIn)},
-            text: 'Sign In',
-        },
-        {
-            label: 'Register Button',
-            onClick: () => {setSelectedFormType(FormTypeEnum.Register)},
-            text: 'Register',
-        }
-    ]
 
     return (
-        <div>
+        <>
             {tokenResult.data?.token.token && 
                 <Home 
                     AddExample={AddExample}
@@ -39,20 +22,9 @@ const Landing: React.FC = () => {
                 />
             }
             {tokenResult.data?.token.token === undefined && 
-                <>
-                    {
-                        selectedFormType === undefined ? 
-                            <BoxArray 
-                                ChildComponentArray={MapToBoxButtonArray({ dataArray: authButtonData, boxWidth: '75%', boxHeight: `${window.innerHeight / 2}` })} 
-                            />
-                        :
-                            <>
-                                <FormSwitch formType={selectedFormType} />
-                            </>
-                    }
-                </>
+                <Authentication />
             }
-        </div>
+        </>
     )
 }
 
