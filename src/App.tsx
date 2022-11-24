@@ -9,7 +9,7 @@ import { useAuthIdToken } from '@react-query-firebase/auth';
 import { auth } from './fbConfig/fbConfig.';
 
 const App: React.FC = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const tokenResult = useAuthIdToken(["token"], auth);
 
   useEffect(() => {
@@ -24,6 +24,8 @@ const App: React.FC = () => {
       <div className="App" style={{fontFamily: 'sans-serif'}}>
         <Routes>
           <Route path='/' element={<Landing />} />
+          <Route path='/player-home' element={<div>Player Home</div>} />
+          <Route path='/dm-home' element={<div>DM Home</div>} />
         </Routes>
       </div>
   );

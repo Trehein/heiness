@@ -1,10 +1,8 @@
 import React from 'react'
 import { auth } from '../../fbConfig/fbConfig.'
 import { useAuthIdToken } from "@react-query-firebase/auth";
-import Home from '../Home/Home';
-import AddExample from '../AddExample/AddExample';
-import UnitList from '../Units/UnitList';
 import Authentication from '../Authentication/Authentication';
+import RoleSelection from '../RoleSelection/RoleSelection';
 
 const Landing: React.FC = () => {
     // grab user info if necessary
@@ -16,10 +14,7 @@ const Landing: React.FC = () => {
     return (
         <>
             {tokenResult.data?.token.token && 
-                <Home 
-                    AddExample={AddExample}
-                    UnitList={UnitList}
-                />
+                <RoleSelection />
             }
             {tokenResult.data?.token.token === undefined && 
                 <Authentication />
