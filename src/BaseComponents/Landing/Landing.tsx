@@ -6,14 +6,30 @@ import { useAuthIdToken } from "@react-query-firebase/auth";
 import Home from '../Home/Home';
 import AddExample from '../AddExample/AddExample';
 import UnitList from '../Units/UnitList';
+import BoxArray from '../BoxArray/BoxArray';
+import { MapToBoxButtonArray } from '../../ComponentArrays/MapToBoxButtonArray/MapToBoxButtonArray';
 
 const Landing: React.FC = () => {
+    // grab user info if necessary
     // const userQuery = useAuthUser(['user'], auth)
     // const user = userQuery.data;
 
     const tokenResult = useAuthIdToken(["token"], auth);
     const [selectedFormType, setSelectedFormType] = useState<undefined | FormTypeEnum>(undefined)
     
+    const authButtonData: any[] = [
+        {
+            label: 'Sign In Button',
+            onClick: () => {setSelectedFormType(FormTypeEnum.SignIn)},
+            text: 'Sign In',
+        },
+        {
+            label: 'Register Button',
+            onClick: () => {setSelectedFormType(FormTypeEnum.Register)},
+            text: 'Register',
+        }
+    ]
+
     return (
         <div>
             {tokenResult.data?.token.token && 
@@ -26,10 +42,9 @@ const Landing: React.FC = () => {
                 <>
                     {
                         selectedFormType === undefined ? 
-                            <>
-                                <button onClick={() => {setSelectedFormType(FormTypeEnum.SignIn)}}>Sign In</button>
-                                <button onClick={() => {setSelectedFormType(FormTypeEnum.Register)}}>Register</button>
-                            </>
+                            <BoxArray 
+                                ChildComponentArray={MapToBoxButtonArray({ dataArray: authButtonData, boxWidth: '75%', boxHeight: `${window.innerHeight / 2}` })} 
+                            />
                         :
                             <>
                                 <FormSwitch formType={selectedFormType} />

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Landing from './Components/Landing/Landing';
+import Landing from './BaseComponents/Landing/Landing';
 import {
   useNavigate,
   Routes,
