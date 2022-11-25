@@ -31,6 +31,7 @@ const RoleSelection: React.FC = () => {
                     boxHeight: `${window.innerHeight / 4}`,
                     fontSize: '1.5em' 
                 })} 
+                boxContainerWidth='33%'
             />
         </div>
     )

@@ -14,7 +14,8 @@ export const boxButtonStyles = (params: boxButtonStylesParams) => {
             backgroundColor: 'white',
             fontSize: fontSize,
             border: 'solid black 2px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            margin: '.5em 0'
         }
     }
 }

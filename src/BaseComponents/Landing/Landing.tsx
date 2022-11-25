@@ -8,7 +8,6 @@ const Landing: React.FC = () => {
     // grab user info if necessary
     // const userQuery = useAuthUser(['user'], auth)
     // const user = userQuery.data;
-
     const tokenResult = useAuthIdToken(["token"], auth);
 
     return (
