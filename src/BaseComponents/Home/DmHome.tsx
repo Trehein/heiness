@@ -10,13 +10,8 @@ const DmHome: React.FC = () => {
 
     const dmHomeButtonData: any[] = [
         {
-            label: 'Navigate to Abilities',
-            onClick: () => {navigate('/abilities')},
-            text: 'Abilities',
-        },
-        {
             label: 'Navigate to Campaigns',
-            onClick: () => {navigate('/campaigns')},
+            onClick: () => {navigate('/dm-campaigns')},
             text: 'Campaigns',
         },
         {
@@ -28,6 +23,11 @@ const DmHome: React.FC = () => {
             label: 'Navigate to Items',
             onClick: () => {navigate('/items')},
             text: 'Items',
+        },
+        {
+            label: 'Navigate to Skills',
+            onClick: () => {navigate('/skills')},
+            text: 'Skills',
         },
         {
             label: 'Navigate to Units',

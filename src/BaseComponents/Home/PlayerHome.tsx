@@ -10,6 +10,11 @@ const PlayerHome: React.FC = () => {
 
     const playerHomeButtonData: any[] = [
         {
+            label: 'Navigate to Campaigns',
+            onClick: () => {navigate('/player-campaigns')},
+            text: 'Campaigns',
+        },
+        {
             label: 'Navigate to Characters',
             onClick: () => {navigate('/characters')},
             text: 'Characters',

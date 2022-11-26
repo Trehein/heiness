@@ -8,10 +8,12 @@ import {
 import { useAuthIdToken } from '@react-query-firebase/auth';
 import { auth } from './fbConfig/fbConfig.';
 import DmHome from './BaseComponents/Home/DmHome';
+import NavBar from './BaseComponents/NavBar/NavBar';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
   const tokenResult = useAuthIdToken(["token"], auth);
+
 
   useEffect(() => {
     // ensures userAuth or reroutes to landing
@@ -22,16 +24,18 @@ const App: React.FC = () => {
   }, [tokenResult.isLoading])
 
   return (
-      <div className="App" style={{fontFamily: 'sans-serif'}}>
+      <div className="App" style={{fontFamily: 'sans-serif', margin: 0}}>
+        <NavBar />
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/player-home' element={<div>Player Home</div>} />
           <Route path='/dm-home' element={<DmHome />} />
-          <Route path='/abilities' element={<div>Abilities</div>} />
-          <Route path='/campaigns' element={<div>Campaigns</div>} />
+          <Route path='/dm-campaigns' element={<div>DM Campaigns</div>} />
           <Route path='/characters' element={<div>Characters</div>} />
           <Route path='/events' element={<div>Events</div>} />
           <Route path='/items' element={<div>Items</div>} />
+          <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
+          <Route path='/skills' element={<div>Skills</div>} />
           <Route path='/stories' element={<div>Stories</div>} />
           <Route path='/units' element={<div>Units</div>} />
         </Routes>

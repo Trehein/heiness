@@ -6,17 +6,16 @@ import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import './index.css'
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
       <QueryClientProvider client={queryClient}>
         <App />
       </QueryClientProvider>
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 
