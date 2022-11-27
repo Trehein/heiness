@@ -14,6 +14,7 @@ const UnitList: React.FC = () => {
     subscribe: true,
   });
   const snapshot = collectionQuery.data
+  console.log('snapshot', snapshot?.docs)
 
   return (
       <>

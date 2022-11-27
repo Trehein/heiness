@@ -9,6 +9,7 @@ import { useAuthIdToken } from '@react-query-firebase/auth';
 import { auth } from './fbConfig/fbConfig.';
 import DmHome from './BaseComponents/Home/DmHome';
 import NavBar from './BaseComponents/NavBar/NavBar';
+import UnitHome from './BaseComponents/Units/UnitHome';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const App: React.FC = () => {
           <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
           <Route path='/skills' element={<div>Skills</div>} />
           <Route path='/stories' element={<div>Stories</div>} />
-          <Route path='/units' element={<div>Units</div>} />
+          <Route path='/units' element={<UnitHome />} />
         </Routes>
       </div>
   );
