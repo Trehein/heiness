@@ -10,6 +10,7 @@ import { auth } from './fbConfig/fbConfig.';
 import DmHome from './BaseComponents/Home/DmHome';
 import NavBar from './BaseComponents/NavBar/NavBar';
 import UnitHome from './BaseComponents/Units/UnitHome';
+import SkillHome from './BaseComponents/Skills/SkillHome';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const App: React.FC = () => {
           <Route path='/events' element={<div>Events</div>} />
           <Route path='/items' element={<div>Items</div>} />
           <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
-          <Route path='/skills' element={<div>Skills</div>} />
+          <Route path='/skills' element={<SkillHome />} />
           <Route path='/stories' element={<div>Stories</div>} />
           <Route path='/units' element={<UnitHome />} />
         </Routes>

@@ -14,6 +14,13 @@ export const formStyles = () => {
             borderRadius: '.5em',
             cursor: 'pointer',
             width: 'fit-content'
+        },
+        pageNumberButtonContainer: {
+            display: 'flex',
+            alignContent: 'center',
+            justifyContent: 'space-between',
+            margin: '.5em 0em',
+
         }
     }
 }

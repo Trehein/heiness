@@ -1,11 +1,11 @@
 import React from 'react'
 
-const UpdateFaction: React.FC = () => {
+const UpdateCampaign: React.FC = () => {
     return (
         <div>
-            UpdateFaction
+            UpdateCampaign
         </div>
     )
 }
 
-export default UpdateFaction
+export default UpdateCampaign
