@@ -1,10 +1,11 @@
 import React from 'react'
 import { formStyles } from '../../../formStyles'
-import { SkillFormStateObj } from '../CreateSkillController'
+import { initialFocusObj, SkillFormStateObj } from '../CreateSkillController'
 
-export type CreateSkillFormPageProps = {
+export type CreateSkillFormS1Props = {
     skillFormStateObj: SkillFormStateObj,
-    handleChangeValue: Function
+    handleChangeValue: Function,
+    handleChangeDynamicObjValue: Function
 }
 
 export const focusOptions = [
@@ -47,10 +48,14 @@ export const focusOptions = [
     {focus: 'Zoology'},
 ]
 
-const CreateSkillFormP1: React.FC<CreateSkillFormPageProps> = (props) => {
-    const {skillFormStateObj, handleChangeValue} = props
-    const {desc, title, mainFocus} = skillFormStateObj
+const CreateSkillFormS1: React.FC<CreateSkillFormS1Props> = (props) => {
+    const {skillFormStateObj, handleChangeValue, handleChangeDynamicObjValue} = props
+    const {desc, title, mainFocus, requiredFocus} = skillFormStateObj
     const formClasses = formStyles()
+
+    const requiredFocusKeys = Object.keys(initialFocusObj)
+
+    console.log(requiredFocusKeys)
 
     return (
         <>
@@ -62,13 +67,6 @@ const CreateSkillFormP1: React.FC<CreateSkillFormPageProps> = (props) => {
                 value={title} 
                 onChange={(e) => handleChangeValue(e, 'title')}
             />
-            {/* mainFocus */}
-            <label>Main Focus</label>
-            <select onChange={(e) => handleChangeValue(e, 'mainFocus')} value={mainFocus}>
-                {focusOptions.map((option: {focus: string}) => {
-                    return <option key={option.focus} value={option.focus}>{option.focus}</option>
-                })}
-            </select>
             {/* Desc */}
             <label>Skill Description</label>
             <textarea 
@@ -77,8 +75,31 @@ const CreateSkillFormP1: React.FC<CreateSkillFormPageProps> = (props) => {
                 cols={30} 
                 defaultValue={desc} 
             />
+            {/* mainFocus */}
+            <label>Main Focus</label>
+            <select onChange={(e) => handleChangeValue(e, 'mainFocus')} value={mainFocus}>
+                {requiredFocusKeys.map((option: string) => {
+                    return <option key={option} value={option}>{option}</option>
+                })}
+            </select>
+            {/* requiredFocus */}
+            <label>Required Focus</label>
+            {requiredFocusKeys.map((focus: string) => {
+                return (
+                    <div>
+                        {focus}
+                        <input 
+                            type="number"
+                            min='0'
+                            max='10'
+                            value={requiredFocus[focus]}
+                            onChange={(e) => handleChangeDynamicObjValue(e, 'requiredFocus', focus)}
+                        />
+                    </div>
+                )
+            })}
         </>
     )
 }
 
-export default CreateSkillFormP1
+export default CreateSkillFormS1
