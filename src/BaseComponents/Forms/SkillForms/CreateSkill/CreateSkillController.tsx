@@ -24,6 +24,24 @@ export type SkillFormStateObj = {
     mainFocus: string
 }
 
+export type BaseAttributeObj = {
+    'Agility': number,
+    'Constitution': number,
+    'Intelligence': number,
+    'Strength': number,
+    'Wild': number,
+    'Wisdom': number
+}
+
+export const initialBaseAttributeObj = {
+    'Agility': 0,
+    'Constitution': 0,
+    'Intelligence': 0,
+    'Strength': 0,
+    'Wild': 0,
+    'Wisdom': 0
+}
+
 export type FocusObj = {
     'Adaptation': number,
     'Anatomy': number,
@@ -104,33 +122,31 @@ export const initialFocusObj: FocusObj = {
     'Zoology': 0
 }
 
+export const initialSkillFormObj: SkillFormStateObj = {
+    title: '',
+    desc: '',
+    mainFocus: '',
+    requiredFocus: initialFocusObj,
+
+    useDifficulty: 5,
+    actionPointCost: 1,
+    cardCost: initialBaseAttributeObj,
+    coolDown: 0,
+
+    range: 0,
+    areaType: '',
+    areaOfEffect: 0,
+    target: '',
+    affected: '',
+
+    damage: 0,
+    damageType: '',
+}
+
 const CreateSkillController = () => {
     const ref = collection(firestore, "skills");
     const mutation = useFirestoreCollectionMutation(ref);
     const formClasses = formStyles()
-    const [formPage, setFormPage] = useState(0)
-
-    const initialSkillFormObj: SkillFormStateObj = {
-        title: '',
-        desc: '',
-        mainFocus: '',
-        requiredFocus: initialFocusObj,
-
-        useDifficulty: 5,
-        actionPointCost: 1,
-        cardCost: {},
-        coolDown: 0,
-
-        range: 0,
-        areaType: '',
-        areaOfEffect: 0,
-        target: '',
-        affected: '',
-
-        damage: 0,
-        damageType: '',
-    }
-
     const [skillFormState, setSkillFormState] = useState<SkillFormStateObj>(initialSkillFormObj)
 
     const handleChangeValue = (event: any, skillFormStateField: string) => {
@@ -138,7 +154,18 @@ const CreateSkillController = () => {
     }
 
     const handleChangeDynamicObjValue = (event: any,  skillFormStateField: string, objKey: string) => {
-        setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.requiredFocus, [objKey]: parseInt(event.target.value) }})
+        // todo - figure out why ...skillFormState[skillFormStateField] doesn't work with typecasting instead of switch
+        // should work https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
+        switch (skillFormStateField) {
+            case 'cardCost': 
+                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.cardCost, [objKey]: parseInt(event.target.value)}})
+                break
+            case 'requiredFocus':
+                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.requiredFocus, [objKey]: parseInt(event.target.value) }})
+                break
+            default:
+                break
+        }
     }
 
     const handleSubmitSkill = () => {
@@ -156,42 +183,18 @@ const CreateSkillController = () => {
         )
     }
 
-    const PageNavigation = () => {
-        return (
-            <div style={formClasses.pageNumberButtonContainer}>
-                <button
-                    onClick={() => setFormPage(formPage - 1)}
-                    disabled={formPage === 0}
-                >
-                    Prev
-                </button>
-                <button
-                    onClick={() => setFormPage(formPage + 1)}
-                >
-                    Next
-                </button>
-            </div>
-        )
-    }
-
-    console.log(skillFormState)
-
     return (
         <div style={formClasses.formContainer}>
-            {formPage === 0 && 
-                <CreateSkillFormS1 
-                    skillFormStateObj={skillFormState} 
-                    handleChangeValue={handleChangeValue} 
-                    handleChangeDynamicObjValue={handleChangeDynamicObjValue}
-                />
-            }
-            {formPage === 1 && 
-                <CreateSkillFormS2 
-                    // skillFormStateObj={skillFormState} 
-                    // handleChangeValue={handleChangeValue} 
-                />
-            }
-            <PageNavigation />
+            <CreateSkillFormS1 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+                handleChangeDynamicObjValue={handleChangeDynamicObjValue}
+            />
+            <CreateSkillFormS2 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+                handleChangeDynamicObjValue={handleChangeDynamicObjValue}
+            />
             <SubmitPage />
             {mutation.isError && <p>{mutation.error.message}</p>}
         </div>
