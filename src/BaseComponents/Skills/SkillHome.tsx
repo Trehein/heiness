@@ -1,14 +1,14 @@
 import React from 'react'
 import { generalStyles } from '../../generalStyles'
-import CreateSkill from '../Forms/SkillForms/CreateSkill/CreateSkillController'
+import CreateSkillController from '../Forms/SkillForms/CreateSkill/CreateSkillController'
 // import SkillList from './SkillList'
 
 const SkillHome: React.FC = () => {
     const generalClasses = generalStyles()
 
     return (
-        <div style={generalClasses.screenContainer}>
-            <CreateSkill />
+        <div style={generalClasses.contentContainer}>
+            <CreateSkillController />
             {/* <SkillList /> */}
         </div>
     )

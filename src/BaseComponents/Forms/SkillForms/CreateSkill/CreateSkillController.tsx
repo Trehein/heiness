@@ -2,9 +2,12 @@ import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore"
 import { collection } from "firebase/firestore";
 import { useState } from "react";
 import { firestore } from "../../../../fbConfig/fbConfig.";
+import { generalStyles } from "../../../../generalStyles";
 import { formStyles } from "../../formStyles";
 import CreateSkillFormS1 from "./CreateSkillFormSections/CreateSkillFormS1";
 import CreateSkillFormS2 from "./CreateSkillFormSections/CreateSkillFormS2";
+import RequiredFocusSection from "./CreateSkillFormSections/RequiredFocusSection";
+import TitleAndDescSection from "./CreateSkillFormSections/TitleAndDescSection";
 
 export type SkillFormStateObj = {
     title: string,
@@ -147,21 +150,22 @@ const CreateSkillController = () => {
     const ref = collection(firestore, "skills");
     const mutation = useFirestoreCollectionMutation(ref);
     const formClasses = formStyles()
+    // const generalClasses = generalStyles()
     const [skillFormState, setSkillFormState] = useState<SkillFormStateObj>(initialSkillFormObj)
 
     const handleChangeValue = (event: any, skillFormStateField: string) => {
         setSkillFormState({...skillFormState, [skillFormStateField]: event.target.value})
     }
 
-    const handleChangeDynamicObjValue = (event: any,  skillFormStateField: string, objKey: string) => {
+    const handleChangeDynamicObjValue = (value: number,  skillFormStateField: string, objKey: string) => {
         // todo - figure out why ...skillFormState[skillFormStateField] doesn't work with typecasting instead of switch
         // should work https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
         switch (skillFormStateField) {
             case 'cardCost': 
-                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.cardCost, [objKey]: parseInt(event.target.value)}})
+                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.cardCost, [objKey]: value }})
                 break
             case 'requiredFocus':
-                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.requiredFocus, [objKey]: parseInt(event.target.value) }})
+                setSkillFormState({...skillFormState, [skillFormStateField]: { ...skillFormState.requiredFocus, [objKey]: value }})
                 break
             default:
                 break
@@ -183,8 +187,19 @@ const CreateSkillController = () => {
         )
     }
 
+    console.log(skillFormState)
+
     return (
         <div style={formClasses.formContainer}>
+            <TitleAndDescSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+            />
+            <RequiredFocusSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+                handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
+            />
             <CreateSkillFormS1 
                 skillFormStateObj={skillFormState} 
                 handleChangeValue={handleChangeValue} 

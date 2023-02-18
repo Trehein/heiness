@@ -16,7 +16,6 @@ const App: React.FC = () => {
   const navigate = useNavigate();
   const tokenResult = useAuthIdToken(["token"], auth);
 
-
   useEffect(() => {
     // ensures userAuth or reroutes to landing
     if (tokenResult.data?.token.token === undefined) {
@@ -26,7 +25,7 @@ const App: React.FC = () => {
   }, [tokenResult.isLoading])
 
   return (
-      <div className="App" style={{fontFamily: 'sans-serif', margin: 0}}>
+      <div style={{fontFamily: 'sans-serif', marginTop: 0}}>
         <NavBar />
         <Routes>
           <Route path='/' element={<Landing />} />

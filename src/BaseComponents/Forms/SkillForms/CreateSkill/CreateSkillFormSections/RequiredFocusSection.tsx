@@ -1,22 +1,21 @@
 import React from 'react'
+import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
-import { formStyles } from '../../../formStyles'
 import { initialFocusObj, SkillFormStateObj } from '../CreateSkillController'
 
-export type CreateSkillFormS1Props = {
+export type RequiredFocusSectionProps = {
     skillFormStateObj: SkillFormStateObj,
     handleChangeValue: Function,
     handleChangeDynamicObjValue: Function
 }
 
-const CreateSkillFormS1: React.FC<CreateSkillFormS1Props> = (props) => {
+const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue, handleChangeDynamicObjValue} = props
     const {mainFocus, requiredFocus} = skillFormStateObj
-    const formClasses = formStyles()
     const requiredFocusKeys = Object.keys(initialFocusObj)
 
     return (
-        <div style={formClasses.formSectionContainer}>
+        <div>
             {/* mainFocus */}
             <SingleOptionSelect 
                 labelText={'Main Focus'}
@@ -26,8 +25,13 @@ const CreateSkillFormS1: React.FC<CreateSkillFormS1Props> = (props) => {
                 handleChangeValue={handleChangeValue}             
             />
 
+            <NumberSelectionBar
+                currentValue={requiredFocus[requiredFocusKeys[0]]}
+                onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', requiredFocusKeys[0])}            
+            />
+
             {/* requiredFocus */}
-            <label>Required Focus</label>
+            {/* <label>Required Focus</label>
             {requiredFocusKeys.map((focus: string) => {
                 return (
                     <div>
@@ -41,9 +45,9 @@ const CreateSkillFormS1: React.FC<CreateSkillFormS1Props> = (props) => {
                         />
                     </div>
                 )
-            })}
+            })} */}
         </div>
     )
 }
 
-export default CreateSkillFormS1
+export default RequiredFocusSection

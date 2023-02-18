@@ -1,8 +1,8 @@
 export const formStyles = () => {
     return {
         formContainer: {
-            // display: 'flex',
-            // flexDirection: 'column' as 'column'
+            display: 'flex',
+            flexDirection: 'column' as 'column'
         },
         formTextInput: {
             margin: '.5em'
@@ -23,7 +23,7 @@ export const formStyles = () => {
         },
         formSectionContainer: {
             display: 'flex',
-            width: '25%',
+            width: '33%',
             flexWrap: 'wrap' as 'wrap'
         }
     }
