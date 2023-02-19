@@ -1,7 +1,7 @@
 import React from 'react'
 import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
-import { initialFocusObj, SkillFormStateObj } from '../CreateSkillController'
+import { baseAttributesWithFocusesGrouped, initialFocusObj, SkillFormStateObj } from '../CreateSkillController'
 
 export type RequiredFocusSectionProps = {
     skillFormStateObj: SkillFormStateObj,
@@ -25,27 +25,30 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                 handleChangeValue={handleChangeValue}             
             />
 
-            <NumberSelectionBar
-                currentValue={requiredFocus[requiredFocusKeys[0]]}
-                onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', requiredFocusKeys[0])}            
-            />
-
             {/* requiredFocus */}
-            {/* <label>Required Focus</label>
-            {requiredFocusKeys.map((focus: string) => {
-                return (
-                    <div>
-                        {focus}
-                        <input 
-                            type="number"
-                            min='0'
-                            max='10'
-                            value={requiredFocus[focus]}
-                            onChange={(e) => handleChangeDynamicObjValue(e, 'requiredFocus', focus)}
-                        />
-                    </div>
-                )
-            })} */}
+            {
+                baseAttributesWithFocusesGrouped.map((attrGroup: {baseAttr: string, focuses: Array<string>}) => {
+                    return (
+                        <div>
+                            <div>{attrGroup.baseAttr}</div>
+                            {
+                                attrGroup.focuses.map((focus: string) => {
+                                    return (
+                                        <div>
+                                            <div>{focus}</div>
+                                            <NumberSelectionBar
+                                                currentValue={requiredFocus[focus]}
+                                                onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', focus)}            
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                })
+            }
+
         </div>
     )
 }

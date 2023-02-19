@@ -85,6 +85,40 @@ export type FocusObj = {
     'Zoology': number
 }
 
+export const constitutionFocuses: Array<string> = ['Adaptation', 'Endurance', 'Resistance']
+export const strengthFocuses: Array<string> = ['Brawling', 'Destruction', 'Sword and Shield', 'Two-Handed Weapons', 'Warfare']
+export const agilityFocuses: Array<string> = ['Hand Dexterity', 'Movement', 'Projectile Weapons', 'Scoundrel', 'Short-Bladed Weapons']
+export const wisdomFocuses: Array<string> = ['Control Gravity', 'Hydrophism', 'Lore', 'Manipulate', 'Memory', 'Sorcery', 'Summoning']
+export const intelligenceFocuses: Array<string> = ['Anatomy', 'Electricity', 'Explosives', 'Light', 'Physics', 'Pyrokinetics', 'Skilled Craftsman']
+export const wildFocuses: Array<string> = ['Geomancy', 'Horticulture', 'Huntsman', 'Natural Senses', 'Necromancy', 'Polymorphism', 'Survival', 'Toxins', 'Wind', 'Zoology']
+
+export const baseAttributesWithFocusesGrouped: Array<{baseAttr: string, focuses: Array<string>}> = [
+    {
+        baseAttr: 'Agility',
+        focuses: agilityFocuses
+    },
+    {
+        baseAttr: 'Constitution',
+        focuses: constitutionFocuses
+    },
+    {
+        baseAttr: 'Intelligence',
+        focuses: intelligenceFocuses
+    },
+    {
+        baseAttr: 'Strength',
+        focuses: strengthFocuses
+    },
+    {
+        baseAttr: 'Wild',
+        focuses: wildFocuses
+    },
+    {
+        baseAttr: 'Wisdom',
+        focuses: wisdomFocuses
+    },
+]
+
 export const initialFocusObj: FocusObj = {
     'Adaptation': 0,
     'Anatomy': 0,
@@ -200,11 +234,7 @@ const CreateSkillController = () => {
                 handleChangeValue={handleChangeValue} 
                 handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
             />
-            <CreateSkillFormS1 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-                handleChangeDynamicObjValue={handleChangeDynamicObjValue}
-            />
+
             <CreateSkillFormS2 
                 skillFormStateObj={skillFormState} 
                 handleChangeValue={handleChangeValue} 
