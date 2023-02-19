@@ -2,6 +2,7 @@ import React from 'react'
 
 export type NumberSelectionBarProps = {
     currentValue: number,
+    maxValue: number,
     onClick: Function
 }
 
@@ -30,10 +31,9 @@ export const numberSelectionBarStyles = () => {
 }
 
 const NumberSelectionBar: React.FC<NumberSelectionBarProps> = (props) => {
-    const {onClick, currentValue} = props
+    const {onClick, currentValue, maxValue} = props
     const numberSelectionBarClasses = numberSelectionBarStyles()
-    const numberArray = [...Array(10)].map((u, i) => i)
-    console.log(currentValue)
+    const numberArray = [...Array(maxValue)].map((u, i) => i)
 
     return (
         <div style={numberSelectionBarClasses.barContainer}>

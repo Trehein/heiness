@@ -1,21 +1,20 @@
 import React from 'react'
-import { formStyles } from '../../../formStyles'
+import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import { initialBaseAttributeObj, SkillFormStateObj } from '../CreateSkillController'
 
-export type CreateSkillFormS2Props = {
+export type UseCostSectionProps = {
     skillFormStateObj: SkillFormStateObj,
     handleChangeValue: Function,
     handleChangeDynamicObjValue: Function
 }
 
-const CreateSkillFormS2: React.FC<CreateSkillFormS2Props> = (props) => {
+const UseCostSection: React.FC<UseCostSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue, handleChangeDynamicObjValue} = props
     const {useDifficulty, actionPointCost, cardCost, coolDown} = skillFormStateObj
-    const formClasses = formStyles()
     const cardCostKeys = Object.keys(initialBaseAttributeObj)
     
     return (
-        <>
+        <div>
             {/* useDifficulty */}
             <label>Base Use Difficulty</label>
             <input 
@@ -36,23 +35,6 @@ const CreateSkillFormS2: React.FC<CreateSkillFormS2Props> = (props) => {
                 value={actionPointCost}
                 onChange={(e) => handleChangeValue(e, 'actionPointCost')}
             />
-            {/* cardCost */}
-            <label>Attribute Card Cost</label>
-            {cardCostKeys.map((attribute: string) => {
-                return (
-                    <div>
-                        {attribute}
-                        <input 
-                            type="number"
-                            min='0'
-                            max='10'
-                            step='1'
-                            value={cardCost[attribute]}
-                            onChange={(e) => handleChangeDynamicObjValue(e, 'cardCost', attribute)}
-                        />
-                    </div>
-                )
-            })}
             {/* coolDown */}
             <label>Cool Down</label>
             <input 
@@ -63,8 +45,21 @@ const CreateSkillFormS2: React.FC<CreateSkillFormS2Props> = (props) => {
                 value={coolDown}
                 onChange={(e) => handleChangeValue(e, 'coolDown')}
             />
-        </>
+            {/* cardCost */}
+            {cardCostKeys.map((attribute: string, i: number) => {
+                return (
+                    <div key={i}>
+                        <div>{attribute}</div>
+                        <NumberSelectionBar
+                            currentValue={cardCost[attribute]}
+                            maxValue={3}
+                            onClick={(value: number) => handleChangeDynamicObjValue(value, 'cardCost', attribute)}            
+                        />
+                    </div>
+                )
+            })}
+        </div>
     )
 }
 
-export default CreateSkillFormS2
+export default UseCostSection

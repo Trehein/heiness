@@ -38,6 +38,7 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                                             <div>{focus}</div>
                                             <NumberSelectionBar
                                                 currentValue={requiredFocus[focus]}
+                                                maxValue={10}
                                                 onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', focus)}            
                                             />
                                         </div>
@@ -48,7 +49,6 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                     )
                 })
             }
-
         </div>
     )
 }

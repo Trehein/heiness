@@ -2,12 +2,14 @@ import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore"
 import { collection } from "firebase/firestore";
 import { useState } from "react";
 import { firestore } from "../../../../fbConfig/fbConfig.";
-import { generalStyles } from "../../../../generalStyles";
 import { formStyles } from "../../formStyles";
-import CreateSkillFormS1 from "./CreateSkillFormSections/CreateSkillFormS1";
-import CreateSkillFormS2 from "./CreateSkillFormSections/CreateSkillFormS2";
+import AreaRangeSection from "./CreateSkillFormSections/AreaRangeSection";
+import DamageSection from "./CreateSkillFormSections/DamageSection";
 import RequiredFocusSection from "./CreateSkillFormSections/RequiredFocusSection";
+import StatusSection from "./CreateSkillFormSections/StatusSection";
+import TargetSection from "./CreateSkillFormSections/TargetSection";
 import TitleAndDescSection from "./CreateSkillFormSections/TitleAndDescSection";
+import UseCostSection from "./CreateSkillFormSections/UseCostSection";
 
 export type SkillFormStateObj = {
     title: string,
@@ -24,7 +26,9 @@ export type SkillFormStateObj = {
     damage: number,
     damageType: string,
     requiredFocus: any,
-    mainFocus: string
+    mainFocus: string,
+    setStatus: string,
+    statusDuration: number,
 }
 
 export type BaseAttributeObj = {
@@ -162,29 +166,33 @@ export const initialFocusObj: FocusObj = {
 export const initialSkillFormObj: SkillFormStateObj = {
     title: '',
     desc: '',
-    mainFocus: '',
-    requiredFocus: initialFocusObj,
 
     useDifficulty: 5,
     actionPointCost: 1,
     cardCost: initialBaseAttributeObj,
     coolDown: 0,
 
-    range: 0,
-    areaType: '',
-    areaOfEffect: 0,
+    damage: 0,
+    damageType: '',
+
+    setStatus: '',
+    statusDuration: 0,
+
     target: '',
     affected: '',
 
-    damage: 0,
-    damageType: '',
+    mainFocus: '',
+    requiredFocus: initialFocusObj,
+
+    range: 0,
+    areaType: '',
+    areaOfEffect: 0
 }
 
 const CreateSkillController = () => {
     const ref = collection(firestore, "skills");
     const mutation = useFirestoreCollectionMutation(ref);
     const formClasses = formStyles()
-    // const generalClasses = generalStyles()
     const [skillFormState, setSkillFormState] = useState<SkillFormStateObj>(initialSkillFormObj)
 
     const handleChangeValue = (event: any, skillFormStateField: string) => {
@@ -229,16 +237,31 @@ const CreateSkillController = () => {
                 skillFormStateObj={skillFormState} 
                 handleChangeValue={handleChangeValue} 
             />
+            <UseCostSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+                handleChangeDynamicObjValue={handleChangeDynamicObjValue}  
+            />
+            <DamageSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+            />
+            <TargetSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+            />
+            <AreaRangeSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+            />
+            <StatusSection 
+                skillFormStateObj={skillFormState} 
+                handleChangeValue={handleChangeValue} 
+            />
             <RequiredFocusSection 
                 skillFormStateObj={skillFormState} 
                 handleChangeValue={handleChangeValue} 
                 handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
-            />
-
-            <CreateSkillFormS2 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-                handleChangeDynamicObjValue={handleChangeDynamicObjValue}
             />
             <SubmitPage />
             {mutation.isError && <p>{mutation.error.message}</p>}
