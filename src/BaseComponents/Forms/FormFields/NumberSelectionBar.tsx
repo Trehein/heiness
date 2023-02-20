@@ -10,7 +10,7 @@ export const numberSelectionBarStyles = () => {
     return {
         barContainer: {
             width: 'fit-content',
-            margin: '0px auto',
+            // margin: '0px auto',
             border: '1px solid yellow',
             display: 'flex',
         },

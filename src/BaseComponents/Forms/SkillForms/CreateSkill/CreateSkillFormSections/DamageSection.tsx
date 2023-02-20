@@ -1,5 +1,6 @@
 import React from 'react'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
+import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
 
 export type DamageSectionProps = {
@@ -40,18 +41,23 @@ export const damageTypes: Array<string> = [
 const DamageSection: React.FC<DamageSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue} = props
     const {damage, damageType} = skillFormStateObj
+    const formClasses = formStyles()
+
     return (
-        <div>
+        <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* damage */}
-            <label>Damage</label>
-            <input 
-                type="number"
-                min='0'
-                max='5'
-                step='1'
-                value={damage}
-                onChange={(e) => handleChangeValue(e, 'damage')}
-            />
+            <div style={formClasses.formNumberField}>
+                <label style={formClasses.formNumberFieldLabel}>Damage</label>
+                <input 
+                    type="number"
+                    min='0'
+                    max='5'
+                    step='1'
+                    value={damage}
+                    onChange={(e) => handleChangeValue(e, 'damage')}
+                />
+            </div>
+
             {/* damageType */}
             <SingleOptionSelect 
                 labelText={'DamageType'}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { formStyles } from '../formStyles'
 
 export type TextInputFieldProps = {
     labelText: string,
@@ -9,8 +10,10 @@ export type TextInputFieldProps = {
 
 const TextInputField: React.FC<TextInputFieldProps> = (props) => {
     const {labelText, fieldValue, targetField, handleChangeValue, } = props
+    const formClasses = formStyles()
+
     return (
-        <>
+        <div style={formClasses.formTextField}>
             <label>{labelText}</label>
             <input
                 // style={formClasses.formTextInput}
@@ -18,7 +21,7 @@ const TextInputField: React.FC<TextInputFieldProps> = (props) => {
                 value={fieldValue} 
                 onChange={(e) => handleChangeValue(e, targetField)}
             />
-        </>
+        </div>
 
     )
 }
