@@ -70,6 +70,13 @@ export const formStyles = () => {
             fontSize: '.8em',
             alignItems: 'flex-start',
             justifyContent: 'start'
+        },
+        formBarGroupLabel: {
+            display: 'flex',
+            width: '95%',
+            margin: '.25em auto',
+            alignItems: 'flex-start',
+            justifyContent: 'start'
         }
     }
 }

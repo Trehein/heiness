@@ -1,5 +1,6 @@
 import React from 'react'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
+import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
 
 export type TargetSectionProps = {
@@ -40,9 +41,10 @@ export const targetArray = [
 const TargetSection: React.FC<TargetSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue} = props
     const {target, affected} = skillFormStateObj
+    const formClasses = formStyles()
 
     return (
-        <div>
+        <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* target */}
             <SingleOptionSelect 
                 labelText={'Target'}

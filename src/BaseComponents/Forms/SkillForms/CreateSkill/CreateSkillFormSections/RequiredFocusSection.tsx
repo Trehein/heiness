@@ -1,6 +1,7 @@
 import React from 'react'
 import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
+import { formStyles } from '../../../formStyles'
 import { baseAttributesWithFocusesGrouped, initialFocusObj, SkillFormStateObj } from '../CreateSkillController'
 
 export type RequiredFocusSectionProps = {
@@ -13,9 +14,10 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue, handleChangeDynamicObjValue} = props
     const {mainFocus, requiredFocus} = skillFormStateObj
     const requiredFocusKeys = Object.keys(initialFocusObj)
+    const formClasses = formStyles()
 
     return (
-        <div>
+        <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* mainFocus */}
             <SingleOptionSelect 
                 labelText={'Main Focus'}
@@ -29,23 +31,27 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
             {
                 baseAttributesWithFocusesGrouped.map((attrGroup: {baseAttr: string, focuses: Array<string>}) => {
                     return (
-                        <div>
-                            <div>{attrGroup.baseAttr}</div>
-                            {
-                                attrGroup.focuses.map((focus: string) => {
-                                    return (
-                                        <div>
-                                            <div>{focus}</div>
-                                            <NumberSelectionBar
-                                                currentValue={requiredFocus[focus]}
-                                                maxValue={10}
-                                                onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', focus)}            
-                                            />
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
+                        <>
+                            <label style={formClasses.formBarGroupLabel}>{attrGroup.baseAttr}</label>
+                            <div style={formClasses.formBarNumberFieldContainer}>
+                                {
+                                    attrGroup.focuses.map((focus: string, i: number) => {
+                                        return (
+                                            <div key={i} style={formClasses.formBarNumberField}>
+                                                <div style={formClasses.formBarNumberField}>
+                                                    <label style={formClasses.formNumberFieldLabel}>{focus}</label>
+                                                    <NumberSelectionBar
+                                                        currentValue={requiredFocus[focus]}
+                                                        maxValue={10}
+                                                        onClick={(value: number) => handleChangeDynamicObjValue(value, 'requiredFocus', focus)}            
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </>
                     )
                 })
             }

@@ -1,41 +1,12 @@
 import React from 'react'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
+import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
 
 export type StatusSectionProps = {
     skillFormStateObj: SkillFormStateObj,
     handleChangeValue: Function,
 }
-
-// export enum TargetEnums {
-//     Any = 'Any',
-//     Corpse = 'Corpse',
-//     Creature = 'Creature',
-//     Downed = 'Downed',
-//     Elements = 'Elements',
-//     Enemy = 'Enemy',
-//     Location = 'Location',
-//     Object = 'Object',
-//     Plant = 'Plant',
-//     Self = 'Self',
-//     Structure = 'Structure',
-//     Target = 'Target'
-// }
-
-// export const targetArray = [
-//     TargetEnums.Any,
-//     TargetEnums.Corpse,
-//     TargetEnums.Creature,
-//     TargetEnums.Downed,
-//     TargetEnums.Elements,
-//     TargetEnums.Enemy,
-//     TargetEnums.Location,
-//     TargetEnums.Object,
-//     TargetEnums.Plant,
-//     TargetEnums.Self,
-//     TargetEnums.Structure,
-//     TargetEnums.Target
-// ]
 
 export enum StatusEnums {
     Acid = 'Acid',
@@ -272,9 +243,10 @@ export const statusArray: Array<StatusEnums> = [
 const StatusSection: React.FC<StatusSectionProps> = (props) => {
     const {skillFormStateObj, handleChangeValue} = props
     const {setStatus, statusDuration} = skillFormStateObj
+    const formClasses = formStyles()
 
     return (
-        <div>
+        <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* setStatus */}
             <SingleOptionSelect 
                 labelText={'Set Status'}
@@ -284,15 +256,17 @@ const StatusSection: React.FC<StatusSectionProps> = (props) => {
                 handleChangeValue={handleChangeValue}             
             />
             {/* statusDuration */}
-            <label>Cool Down</label>
-            <input 
-                type="number"
-                min='0'
-                max='5'
-                step='1'
-                value={statusDuration}
-                onChange={(e) => handleChangeValue(e, 'statusDuration')}
-            />
+            <div style={formClasses.formNumberField}>
+                <label style={formClasses.formNumberFieldLabel}>Status Duration</label>
+                <input 
+                    type="number"
+                    min='0'
+                    max='5'
+                    step='1'
+                    value={statusDuration}
+                    onChange={(e) => handleChangeValue(e, 'statusDuration')}
+                />
+            </div>
         </div>
     )
 }
