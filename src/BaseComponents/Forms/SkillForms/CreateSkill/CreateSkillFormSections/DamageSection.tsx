@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberField from '../../../FormFields/NumberField'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
 import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
@@ -46,18 +47,17 @@ const DamageSection: React.FC<DamageSectionProps> = (props) => {
     return (
         <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* damage */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Damage</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='5'
-                    step='1'
-                    value={damage}
-                    onChange={(e) => handleChangeValue(e, 'damage')}
-                />
-            </div>
-
+            <NumberField 
+                labelText={'Damage'} 
+                fieldValue={damage} 
+                targetField={'damage'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 10
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
             {/* damageType */}
             <SingleOptionSelect 
                 labelText={'DamageType'}

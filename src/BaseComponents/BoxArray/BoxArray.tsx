@@ -12,9 +12,9 @@ const BoxArray: React.FC<BoxArrayProps> = (props) => {
 
     return (
         <div className={'boxArrayContainer'}style={boxArrayClasses.boxArrayContainer} >
-            {ChildComponentArray.map((ChildComponent: React.ReactNode) => {
+            {ChildComponentArray.map((ChildComponent: React.ReactNode, index: number) => {
                 return (
-                    <div style={boxArrayClasses.boxContainer}>
+                    <div key={index} style={boxArrayClasses.boxContainer}>
                         {ChildComponent}
                     </div>
                 )

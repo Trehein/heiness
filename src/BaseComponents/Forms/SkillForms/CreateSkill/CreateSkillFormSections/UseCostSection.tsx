@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberField from '../../../FormFields/NumberField'
 import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import { formStyles } from '../../../formStyles'
 import { initialBaseAttributeObj, SkillFormStateObj } from '../CreateSkillController'
@@ -18,43 +19,43 @@ const UseCostSection: React.FC<UseCostSectionProps> = (props) => {
     return (
         <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* useDifficulty */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Base Use Difficulty</label>
-                <input 
-                    type="number"
-                    min='5'
-                    max='25'
-                    step='5'
-                    value={useDifficulty}
-                    onChange={(e) => handleChangeValue(e, 'useDifficulty')}
-                />
-            </div>
+            <NumberField 
+                labelText={'Use Difficulty'} 
+                fieldValue={useDifficulty} 
+                targetField={'useDifficulty'} 
+                stepAmount={5} 
+                valueRange={{
+                    minValue: 5,
+                    maxValue: 25
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
             {/* actionPointCost */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Action Point Cost</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='10'
-                    step='1'
-                    value={actionPointCost}
-                    onChange={(e) => handleChangeValue(e, 'actionPointCost')}
-                />
-            </div>
+            <NumberField 
+                labelText={'Action Point Cost'} 
+                fieldValue={actionPointCost} 
+                targetField={'actionPointCost'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 10
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
             {/* coolDown */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Cool Down</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='5'
-                    step='1'
-                    value={coolDown}
-                    onChange={(e) => handleChangeValue(e, 'coolDown')}
-                />
-            </div>
-
+            <NumberField 
+                labelText={'Cool Down'} 
+                fieldValue={coolDown} 
+                targetField={'coolDown'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 5
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
             {/* cardCost */}
+            <label style={formClasses.formBarGroupLabel}>Base Attribute Card Cost</label>
             <div style={formClasses.formBarNumberFieldContainer}>
                 {cardCostKeys.map((attribute: string, i: number) => {
                     return (
@@ -69,7 +70,6 @@ const UseCostSection: React.FC<UseCostSectionProps> = (props) => {
                     )
                 })}
             </div>
-
         </div>
     )
 }

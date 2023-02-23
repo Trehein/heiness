@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberField from '../../../FormFields/NumberField'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
 import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
@@ -32,17 +33,17 @@ const AreaRangeSection: React.FC<AreaRangeSectionProps> = (props) => {
     return (
         <div style={{...formClasses.formGroupContainer, border: '1px solid blue'}}>
             {/* range */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Range</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='5'
-                    step='1'
-                    value={range}
-                    onChange={(e) => handleChangeValue(e, 'range')}
-                />
-            </div>
+            <NumberField 
+                labelText={'Range'} 
+                fieldValue={range} 
+                targetField={'range'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 5
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
             {/* area */}
             <SingleOptionSelect 
                 labelText={'Area'}
@@ -52,17 +53,17 @@ const AreaRangeSection: React.FC<AreaRangeSectionProps> = (props) => {
                 handleChangeValue={handleChangeValue}             
             />
             {/* areaOfEffect */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Area of Effect</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='5'
-                    step='1'
-                    value={areaOfEffect}
-                    onChange={(e) => handleChangeValue(e, 'areaOfEffect')}
-                />
-            </div>
+            <NumberField 
+                labelText={'Area of Effect'} 
+                fieldValue={areaOfEffect} 
+                targetField={'areaOfEffect'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 5
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
         </div>
     )
 }

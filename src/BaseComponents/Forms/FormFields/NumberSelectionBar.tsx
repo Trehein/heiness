@@ -43,6 +43,7 @@ const NumberSelectionBar: React.FC<NumberSelectionBarProps> = (props) => {
 
                 return (
                     <div 
+                        key={i}
                         style={isActive ? numberSelectionBarClasses.filledBox : numberSelectionBarClasses.emptyBox}
                         onClick={() => onClick(value)}
                     >

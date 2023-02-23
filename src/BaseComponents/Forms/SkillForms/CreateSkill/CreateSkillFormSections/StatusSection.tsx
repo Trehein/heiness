@@ -1,4 +1,5 @@
 import React from 'react'
+import NumberField from '../../../FormFields/NumberField'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
 import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../CreateSkillController'
@@ -256,17 +257,17 @@ const StatusSection: React.FC<StatusSectionProps> = (props) => {
                 handleChangeValue={handleChangeValue}             
             />
             {/* statusDuration */}
-            <div style={formClasses.formNumberField}>
-                <label style={formClasses.formNumberFieldLabel}>Status Duration</label>
-                <input 
-                    type="number"
-                    min='0'
-                    max='5'
-                    step='1'
-                    value={statusDuration}
-                    onChange={(e) => handleChangeValue(e, 'statusDuration')}
-                />
-            </div>
+            <NumberField 
+                labelText={'Status Duration'} 
+                fieldValue={statusDuration} 
+                targetField={'statusDuration'} 
+                stepAmount={1} 
+                valueRange={{
+                    minValue: 0,
+                    maxValue: 5
+                }} 
+                handleChangeValue={handleChangeValue}            
+            />
         </div>
     )
 }

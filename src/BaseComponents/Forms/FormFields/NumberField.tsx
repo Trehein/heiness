@@ -1,26 +1,31 @@
 import React from 'react'
+import { formStyles } from '../formStyles'
 
 export type NumberFieldProps = {
     labelText: string,
     fieldValue: number,
     targetField: string,
-    objKey: string,
-    handleChangeDynamicObjValue: Function
+    stepAmount: number,
+    valueRange: {minValue: number, maxValue: number}
+    handleChangeValue: Function
 }
 
 const NumberField: React.FC<NumberFieldProps> = (props) => {
-    const {labelText, fieldValue, targetField, objKey, handleChangeDynamicObjValue, } = props
+    const {labelText, fieldValue, targetField, stepAmount, valueRange, handleChangeValue} = props
+    const formClasses = formStyles()
+
     return (
-        <>
-            <label>{labelText}</label>
+        <div style={formClasses.formNumberField}>
+            <label style={formClasses.formNumberFieldLabel}>{labelText}</label>
             <input 
                 type="number"
-                min='0'
-                max='10'
+                min={valueRange.minValue}
+                max={valueRange.maxValue}
+                step={stepAmount}
                 value={fieldValue}
-                onChange={(e) => handleChangeDynamicObjValue(e, targetField, objKey)}
+                onChange={(e) => handleChangeValue(e, targetField)}
             />
-        </>
+        </div>
 
     )
 }

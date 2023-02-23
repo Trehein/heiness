@@ -29,9 +29,9 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
 
             {/* requiredFocus */}
             {
-                baseAttributesWithFocusesGrouped.map((attrGroup: {baseAttr: string, focuses: Array<string>}) => {
+                baseAttributesWithFocusesGrouped.map((attrGroup: {baseAttr: string, focuses: Array<string>}, index: number) => {
                     return (
-                        <>
+                        <div key={index}>
                             <label style={formClasses.formBarGroupLabel}>{attrGroup.baseAttr}</label>
                             <div style={formClasses.formBarNumberFieldContainer}>
                                 {
@@ -51,7 +51,7 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                                     })
                                 }
                             </div>
-                        </>
+                        </div>
                     )
                 })
             }
