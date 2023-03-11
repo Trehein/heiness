@@ -11,6 +11,7 @@ import DmHome from './BaseComponents/Home/DmHome';
 import NavBar from './BaseComponents/NavBar/NavBar';
 import UnitHome from './BaseComponents/Units/UnitHome';
 import SkillHome from './BaseComponents/Skills/SkillHome';
+import CreateSkillController from './BaseComponents/Forms/SkillForms/CreateSkill/CreateSkillController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path='/items' element={<div>Items</div>} />
           <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
           <Route path='/skills' element={<SkillHome />} />
+          <Route path='/skills/create' element={<CreateSkillController />} />
           <Route path='/stories' element={<div>Stories</div>} />
           <Route path='/units' element={<UnitHome />} />
         </Routes>

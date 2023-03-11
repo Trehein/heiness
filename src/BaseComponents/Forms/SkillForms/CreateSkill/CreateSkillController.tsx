@@ -1,167 +1,18 @@
 import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore";
 import { collection } from "firebase/firestore";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { firestore } from "../../../../fbConfig/fbConfig.";
+import { generalStyles } from "../../../../generalStyles";
 import { formStyles } from "../../formStyles";
-import AreaRangeSection from "./CreateSkillFormSections/AreaRangeSection";
-import DamageSection from "./CreateSkillFormSections/DamageSection";
-import RequiredFocusSection from "./CreateSkillFormSections/RequiredFocusSection";
-import StatusSection from "./CreateSkillFormSections/StatusSection";
-import TargetSection from "./CreateSkillFormSections/TargetSection";
+import { SkillFormStateObj } from "../constants";
+import AreaRangeSection, { AreaEnums } from "./CreateSkillFormSections/AreaRangeSection";
+import DamageSection, { DamageTypeEnums } from "./CreateSkillFormSections/DamageSection";
+import RequiredFocusSection, { initialFocusObj } from "./CreateSkillFormSections/RequiredFocusSection";
+import StatusSection, { StatusEnums } from "./CreateSkillFormSections/StatusSection";
+import TargetSection, { TargetEnums } from "./CreateSkillFormSections/TargetSection";
 import TitleAndDescSection from "./CreateSkillFormSections/TitleAndDescSection";
-import UseCostSection from "./CreateSkillFormSections/UseCostSection";
-
-export type SkillFormStateObj = {
-    title: string,
-    desc: string,
-    useDifficulty: number,
-    actionPointCost: number,
-    cardCost: any,
-    coolDown: number,
-    range: number,
-    areaType: string,
-    areaOfEffect: number,
-    target: string,
-    affected: string,
-    damage: number,
-    damageType: string,
-    requiredFocus: any,
-    mainFocus: string,
-    setStatus: string,
-    statusDuration: number,
-}
-
-export type BaseAttributeObj = {
-    'Agility': number,
-    'Constitution': number,
-    'Intelligence': number,
-    'Strength': number,
-    'Wild': number,
-    'Wisdom': number
-}
-
-export const initialBaseAttributeObj = {
-    'Agility': 0,
-    'Constitution': 0,
-    'Intelligence': 0,
-    'Strength': 0,
-    'Wild': 0,
-    'Wisdom': 0
-}
-
-export type FocusObj = {
-    'Adaptation': number,
-    'Anatomy': number,
-    'Brawling': number,
-    'Control Gravity': number,
-    'Destruction': number,
-    'Electricity': number,
-    'Endurance': number,
-    'Explosives': number,
-    'Geomancy': number,
-    'Hand Dexterity': number,
-    'Horticulture': number,
-    'Huntsman': number,
-    'Hydrophism': number,
-    'Light': number,
-    'Lore': number,
-    'Manipulate': number,
-    'Memory': number,
-    'Movement': number,
-    'Natural Senses': number,
-    'Necromancy': number, 
-    'Physics': number, 
-    'Polymorphism': number, 
-    'Projectile Weapons': number, 
-    'Pyrokinetics': number, 
-    'Resistance': number, 
-    'Scoundrel': number,
-    'Short-Bladed Weapons': number,
-    'Skilled Craftsman': number,
-    'Sorcery': number,
-    'Summoning': number,
-    'Survival': number,
-    'Sword and Shield': number,
-    'Toxins': number,
-    'Two-Handed Weapons': number,
-    'Warfare': number,
-    'Wind': number,
-    'Zoology': number
-}
-
-export const constitutionFocuses: Array<string> = ['Adaptation', 'Endurance', 'Resistance']
-export const strengthFocuses: Array<string> = ['Brawling', 'Destruction', 'Sword and Shield', 'Two-Handed Weapons', 'Warfare']
-export const agilityFocuses: Array<string> = ['Hand Dexterity', 'Movement', 'Projectile Weapons', 'Scoundrel', 'Short-Bladed Weapons']
-export const wisdomFocuses: Array<string> = ['Control Gravity', 'Hydrophism', 'Lore', 'Manipulate', 'Memory', 'Sorcery', 'Summoning']
-export const intelligenceFocuses: Array<string> = ['Anatomy', 'Electricity', 'Explosives', 'Light', 'Physics', 'Pyrokinetics', 'Skilled Craftsman']
-export const wildFocuses: Array<string> = ['Geomancy', 'Horticulture', 'Huntsman', 'Natural Senses', 'Necromancy', 'Polymorphism', 'Survival', 'Toxins', 'Wind', 'Zoology']
-
-export const baseAttributesWithFocusesGrouped: Array<{baseAttr: string, focuses: Array<string>}> = [
-    {
-        baseAttr: 'Agility',
-        focuses: agilityFocuses
-    },
-    {
-        baseAttr: 'Constitution',
-        focuses: constitutionFocuses
-    },
-    {
-        baseAttr: 'Intelligence',
-        focuses: intelligenceFocuses
-    },
-    {
-        baseAttr: 'Strength',
-        focuses: strengthFocuses
-    },
-    {
-        baseAttr: 'Wild',
-        focuses: wildFocuses
-    },
-    {
-        baseAttr: 'Wisdom',
-        focuses: wisdomFocuses
-    },
-]
-
-export const initialFocusObj: FocusObj = {
-    'Adaptation': 0,
-    'Anatomy': 0,
-    'Brawling': 0,
-    'Control Gravity': 0,
-    'Destruction': 0,
-    'Electricity': 0,
-    'Endurance': 0,
-    'Explosives': 0,
-    'Geomancy': 0,
-    'Hand Dexterity': 0,
-    'Horticulture': 0,
-    'Huntsman': 0,
-    'Hydrophism': 0,
-    'Light': 0,
-    'Lore': 0,
-    'Manipulate': 0,
-    'Memory': 0,
-    'Movement': 0,
-    'Natural Senses': 0,
-    'Necromancy': 0, 
-    'Physics': 0, 
-    'Polymorphism': 0, 
-    'Projectile Weapons': 0, 
-    'Pyrokinetics': 0, 
-    'Resistance': 0, 
-    'Scoundrel': 0,
-    'Short-Bladed Weapons': 0,
-    'Skilled Craftsman': 0,
-    'Sorcery': 0,
-    'Summoning': 0,
-    'Survival': 0,
-    'Sword and Shield': 0,
-    'Toxins': 0,
-    'Two-Handed Weapons': 0,
-    'Warfare': 0,
-    'Wind': 0,
-    'Zoology': 0
-}
+import UseCostSection, { initialBaseAttributeObj } from "./CreateSkillFormSections/UseCostSection";
 
 export const initialSkillFormObj: SkillFormStateObj = {
     title: '',
@@ -173,25 +24,28 @@ export const initialSkillFormObj: SkillFormStateObj = {
     coolDown: 0,
 
     damage: 0,
-    damageType: '',
+    damageType: DamageTypeEnums.None,
 
-    setStatus: '',
+    setStatus: StatusEnums.None,
     statusDuration: 0,
 
-    target: '',
-    affected: '',
+    target: TargetEnums.Any,
+    affected: TargetEnums.Any,
 
-    mainFocus: '',
+    mainFocus: 'Adaptation',
     requiredFocus: initialFocusObj,
 
     range: 0,
-    areaType: '',
+    areaType: AreaEnums.None,
     areaOfEffect: 0
 }
 
 const CreateSkillController = () => {
     const ref = collection(firestore, "skills");
     const mutation = useFirestoreCollectionMutation(ref);
+
+    const navigate = useNavigate();
+    const generalClasses = generalStyles()
     const formClasses = formStyles()
     const [skillFormState, setSkillFormState] = useState<SkillFormStateObj>(initialSkillFormObj)
 
@@ -200,7 +54,7 @@ const CreateSkillController = () => {
     }
 
     const handleChangeDynamicObjValue = (value: number,  skillFormStateField: string, objKey: string) => {
-        // todo - figure out why ...skillFormState[skillFormStateField] doesn't work with typecasting instead of switch
+        // todo - figure out why ...skillFormState[skillFormStateField] doesn't work with typecasting instead of switch with .notation hard coded
         // should work https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
         switch (skillFormStateField) {
             case 'cardCost': 
@@ -216,6 +70,7 @@ const CreateSkillController = () => {
 
     const handleSubmitSkill = () => {
         mutation.mutate({ ...skillFormState });
+        navigate('/skills')
     }
 
     const SubmitPage = () => {
@@ -229,42 +84,42 @@ const CreateSkillController = () => {
         )
     }
 
-    console.log(skillFormState)
-
     return (
-        <div style={formClasses.formContainer}>
-            <TitleAndDescSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-            />
-            <UseCostSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-                handleChangeDynamicObjValue={handleChangeDynamicObjValue}  
-            />
-            <DamageSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-            />
-            <TargetSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-            />
-            <AreaRangeSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-            />
-            <StatusSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-            />
-            <RequiredFocusSection 
-                skillFormStateObj={skillFormState} 
-                handleChangeValue={handleChangeValue} 
-                handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
-            />
-            <SubmitPage />
-            {mutation.isError && <p>{mutation.error.message}</p>}
+        <div style={generalClasses.contentContainer}>
+            <div style={formClasses.formContainer}>
+                <TitleAndDescSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                />
+                <UseCostSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                    handleChangeDynamicObjValue={handleChangeDynamicObjValue}  
+                />
+                <DamageSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                />
+                <TargetSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                />
+                <AreaRangeSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                />
+                <StatusSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                />
+                <RequiredFocusSection 
+                    skillFormStateObj={skillFormState} 
+                    handleChangeValue={handleChangeValue} 
+                    handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
+                />
+                <SubmitPage />
+                {mutation.isError && <p>{mutation.error.message}</p>}
+            </div>
         </div>
     );
 }

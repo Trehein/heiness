@@ -2,12 +2,30 @@ import React from 'react'
 import NumberField from '../../../FormFields/NumberField'
 import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import { formStyles } from '../../../formStyles'
-import { initialBaseAttributeObj, SkillFormStateObj } from '../CreateSkillController'
+import { SkillFormStateObj } from '../../constants'
 
 export type UseCostSectionProps = {
     skillFormStateObj: SkillFormStateObj,
     handleChangeValue: Function,
     handleChangeDynamicObjValue: Function
+}
+
+export type BaseAttributeObj = {
+    'Agility': number,
+    'Constitution': number,
+    'Intelligence': number,
+    'Strength': number,
+    'Wild': number,
+    'Wisdom': number
+}
+
+export const initialBaseAttributeObj = {
+    'Agility': 0,
+    'Constitution': 0,
+    'Intelligence': 0,
+    'Strength': 0,
+    'Wild': 0,
+    'Wisdom': 0
 }
 
 const UseCostSection: React.FC<UseCostSectionProps> = (props) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
 import { formStyles } from '../../../formStyles'
-import { SkillFormStateObj } from '../CreateSkillController'
+import { SkillFormStateObj } from '../../constants'
 
 export type TargetSectionProps = {
     skillFormStateObj: SkillFormStateObj,

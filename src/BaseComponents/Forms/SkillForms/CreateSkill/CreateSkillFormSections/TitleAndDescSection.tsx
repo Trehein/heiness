@@ -2,7 +2,7 @@ import React from 'react'
 import TextAreaField from '../../../FormFields/TextAreaField'
 import TextInputField from '../../../FormFields/TextInputField'
 import { formStyles } from '../../../formStyles'
-import { SkillFormStateObj } from '../CreateSkillController'
+import { SkillFormStateObj } from '../../constants'
 
 export type TitleAndDescSectionProps = {
     skillFormStateObj: SkillFormStateObj,
