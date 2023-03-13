@@ -7,7 +7,20 @@ import {
   DocumentData
 } from "firebase/firestore";
 import { firestore } from '../../fbConfig/fbConfig.';
-import { Link } from 'react-router-dom';
+import SkillCard from './SkillCard/SkillCard';
+
+export const skillListStyles = () => {
+  return {
+    listContainer: {
+      border: '1px solid blue',
+      marginTop: '1em',
+      width: window.innerWidth < 420 ? '95%' : '85%',
+      margin: '1em auto 0em auto',
+      display: 'flex',
+      flexWrap: 'wrap' as 'wrap',
+    }
+  }
+}
 
 const SkillList: React.FC = () => {
   // todo - use this for websocket queries
@@ -17,6 +30,8 @@ const SkillList: React.FC = () => {
   // });
   // const snapshot = collectionQuery.data
   // console.log('snapshot', snapshot?.docs[0])
+  const skillListClasses = skillListStyles()
+
 
   // static collection query
   const queryRef = query(collection(firestore, 'skills'))
@@ -24,25 +39,17 @@ const SkillList: React.FC = () => {
   const querySnapshot = collectionQuery.data
 
   return (
-      <>
+      <div className={'listContainer'} style={skillListClasses.listContainer}>
           { 
               querySnapshot !== undefined &&
               querySnapshot.docs.map((docSnapshot: QueryDocumentSnapshot<DocumentData>) => {
-                  const data = docSnapshot.data();
-                    // console.log('data', data)
-                    // console.log(docSnapshot.id)
-                  return( 
-                    <Link key={docSnapshot.id} to={`/skills/${docSnapshot.id}`}>
-                      <div>
-                        {data.title}
-                      </div>
-                    </Link>
+                  return(
+                    <SkillCard key={docSnapshot.id} docSnapshot={docSnapshot} />
                 )
               })
           }
-      </>
+      </div>
   )
-
 }
 
 export default SkillList

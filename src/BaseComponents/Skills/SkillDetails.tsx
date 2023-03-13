@@ -9,7 +9,7 @@ const SkillDetails: React.FC = () => {
     const { id } = useParams()
     const generalClasses = generalStyles()
     // static doc query
-    const docRef = doc(firestore, 'skills', id !== undefined ? id : '')
+    const docRef = doc(firestore, 'skills', id !== undefined ? id : '') // needs the ternary because id may be undefined coming back from useParams()
     const skillFromId = useFirestoreDocument(['skills', id], docRef)
     const snapShotOfSkillFromId = skillFromId.data
     console.log('skillSnapshot', snapShotOfSkillFromId?.data())
