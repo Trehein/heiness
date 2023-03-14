@@ -24,19 +24,17 @@ export const skillListStyles = () => {
 
 const SkillList: React.FC = () => {
   // todo - use this for websocket queries
-  // const ref = query(collection(firestore, "skills"));
-  // const collectionQuery = useFirestoreQuery(["skills"], ref, {
-  //   subscribe: true,
-  // });
-  // const snapshot = collectionQuery.data
-  // console.log('snapshot', snapshot?.docs[0])
+  const queryRef = query(collection(firestore, "skills"));
+  const collectionQuery = useFirestoreQuery(["skills"], queryRef, {
+    subscribe: true,
+  });
+  const querySnapshot = collectionQuery.data
   const skillListClasses = skillListStyles()
 
-
   // static collection query
-  const queryRef = query(collection(firestore, 'skills'))
-  const collectionQuery = useFirestoreQuery(['skills'], queryRef)
-  const querySnapshot = collectionQuery.data
+  // const queryRef = query(collection(firestore, 'skills'))
+  // const collectionQuery = useFirestoreQuery(['skills'], queryRef)
+  // const querySnapshot = collectionQuery.data
 
   return (
       <div className={'listContainer'} style={skillListClasses.listContainer}>
