@@ -18,6 +18,8 @@ const App: React.FC = () => {
   const navigate = useNavigate();
   const tokenResult = useAuthIdToken(["token"], auth);
 
+  console.log('for test')
+
   useEffect(() => {
     // ensures userAuth or reroutes to landing
     if (tokenResult.data?.token.token === undefined) {
