@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../fbConfig/fbConfig.';
+import { auth } from '../../../fbConfig/fbConfig';
 import { formStyles } from '../formStyles';
 
 const Register: React.FC = () => {
@@ -11,7 +11,6 @@ const Register: React.FC = () => {
     const handleClick = () => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((response: any) => {
-          console.log(response)
           sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken)
         })
         .catch((error) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import BaseButton from '../Buttons/BaseButton'
 import { collection, doc } from "firebase/firestore";
-import { firestore } from '../../fbConfig/fbConfig.';
+import { firestore } from '../../fbConfig/fbConfig';
 import { useFirestoreDocumentMutation, useFirestoreDocumentDeletion  } from '@react-query-firebase/firestore';
 
 export type UnitCardProps = {

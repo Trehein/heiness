@@ -1,5 +1,6 @@
 import React from 'react'
-import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
+import NumberField from '../../../FormFields/NumberField'
+// import NumberSelectionBar from '../../../FormFields/NumberSelectionBar'
 import SingleOptionSelect from '../../../FormFields/SingleOptionSelect'
 import { formStyles } from '../../../formStyles'
 import { SkillFormStateObj } from '../../constants'
@@ -7,7 +8,7 @@ import { SkillFormStateObj } from '../../constants'
 export type RequiredFocusSectionProps = {
     skillFormStateObj: SkillFormStateObj,
     handleChangeValue: Function,
-    handleChangeDynamicObjValue: Function
+    handleChangeNestedRequiredFocusValue: Function
 }
 
 export type FocusObj = {
@@ -125,7 +126,7 @@ export const baseAttributesWithFocusesGrouped: Array<{baseAttr: string, focuses:
 ]
 
 const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
-    const {skillFormStateObj, handleChangeValue, handleChangeDynamicObjValue} = props
+    const {skillFormStateObj, handleChangeValue, handleChangeNestedRequiredFocusValue} = props
     const {mainFocus, requiredFocus} = skillFormStateObj
     const requiredFocusKeys = Object.keys(initialFocusObj)
     const formClasses = formStyles()
@@ -152,6 +153,36 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                                     attrGroup.focuses.map((focus: string, i: number) => {
                                         return (
                                             <div key={i} style={formClasses.formBarNumberField}>
+                                                <NumberField 
+                                                    labelText={focus} 
+                                                    fieldValue={requiredFocus[focus]} 
+                                                    targetField={focus} 
+                                                    stepAmount={1} 
+                                                    valueRange={{
+                                                        minValue: 0,
+                                                        maxValue: 10
+                                                    }} 
+                                                    handleChangeValue={handleChangeNestedRequiredFocusValue} 
+                                                />
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                    )
+                })
+            }
+            {/* {
+                baseAttributesWithFocusesGrouped.map((attrGroup: {baseAttr: string, focuses: Array<string>}, index: number) => {
+                    return (
+                        <div key={index}>
+                            <label style={formClasses.formBarGroupLabel}>{attrGroup.baseAttr}</label>
+                            <div style={formClasses.formBarNumberFieldContainer}>
+                                {
+                                    attrGroup.focuses.map((focus: string, i: number) => {
+                                        return (
+                                            <div key={i} style={formClasses.formBarNumberField}>
                                                 <div style={formClasses.formBarNumberField}>
                                                     <label style={formClasses.formNumberFieldLabel}>{focus}</label>
                                                     <NumberSelectionBar
@@ -168,7 +199,7 @@ const RequiredFocusSection: React.FC<RequiredFocusSectionProps> = (props) => {
                         </div>
                     )
                 })
-            }
+            } */}
         </div>
     )
 }

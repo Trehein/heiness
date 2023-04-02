@@ -6,7 +6,7 @@ import {
   QueryDocumentSnapshot,
   DocumentData
 } from "firebase/firestore";
-import { firestore } from '../../fbConfig/fbConfig.';
+import { firestore } from '../../fbConfig/fbConfig';
 import SkillCard from './SkillCard/SkillCard';
 
 export const skillListStyles = () => {

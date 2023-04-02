@@ -10,7 +10,7 @@ import TargetSection from './SkillCardSections/TargetSection'
 import UseDifficultyCoolDownSection from './SkillCardSections/UseDifficultyCoolDownSection'
 import { skillCardStyles } from './skillCardStyles'
 import { Link } from 'react-router-dom'
-import { firestore } from '../../../fbConfig/fbConfig.'
+import { firestore } from '../../../fbConfig/fbConfig'
 import { useFirestoreDocumentDeletion } from '@react-query-firebase/firestore'
 
 export type SkillCardProps = {
@@ -21,8 +21,6 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
     const skillCardClasses = skillCardStyles()
     const { docSnapshot } = props
     const data = docSnapshot.data();
-    console.log('data', data)
-    console.log(docSnapshot.id)
 
     // const dbRef = query(collection(firestore, `skills/${docSnapshot.id}`))
     const dbCollection = collection(firestore, 'skills')

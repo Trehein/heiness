@@ -1,5 +1,5 @@
 import React from 'react'
-import { auth } from '../../fbConfig/fbConfig.'
+import { auth } from '../../fbConfig/fbConfig'
 import { useAuthIdToken } from "@react-query-firebase/auth";
 import Authentication from '../Authentication/Authentication';
 import RoleSelection from '../RoleSelection/RoleSelection';

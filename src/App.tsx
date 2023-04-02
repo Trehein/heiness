@@ -6,19 +6,17 @@ import {
   Route
 } from "react-router-dom";
 import { useAuthIdToken } from '@react-query-firebase/auth';
-import { auth } from './fbConfig/fbConfig.';
 import DmHome from './BaseComponents/Home/DmHome';
 import NavBar from './BaseComponents/NavBar/NavBar';
 import UnitHome from './BaseComponents/Units/UnitHome';
 import SkillHome from './BaseComponents/Skills/SkillHome';
 import CreateSkillController from './BaseComponents/Forms/SkillForms/CreateSkill/CreateSkillController';
 import SkillDetails from './BaseComponents/Skills/SkillDetails';
+import { auth } from './fbConfig/fbConfig';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
   const tokenResult = useAuthIdToken(["token"], auth);
-
-  console.log('for test')
 
   useEffect(() => {
     // ensures userAuth or reroutes to landing

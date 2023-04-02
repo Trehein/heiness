@@ -2,7 +2,7 @@ import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore"
 import { collection } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { firestore } from "../../../../fbConfig/fbConfig.";
+import { firestore } from "../../../../fbConfig/fbConfig";
 import { generalStyles } from "../../../../generalStyles";
 import { formStyles } from "../../formStyles";
 import { SkillFormStateObj } from "../constants";
@@ -51,6 +51,16 @@ const CreateSkillController = () => {
 
     const handleChangeValue = (event: any, skillFormStateField: string) => {
         setSkillFormState({...skillFormState, [skillFormStateField]: event.target.value})
+    }
+
+    const handleChangeNestedRequiredFocusValue = (event: any, skillFormStateField: string) => {
+        setSkillFormState({
+            ...skillFormState
+            , requiredFocus: {
+                ...skillFormState.requiredFocus,
+                [skillFormStateField]: event.target.value
+            }
+        })
     }
 
     const handleChangeDynamicObjValue = (value: number,  skillFormStateField: string, objKey: string) => {
@@ -115,7 +125,7 @@ const CreateSkillController = () => {
                 <RequiredFocusSection 
                     skillFormStateObj={skillFormState} 
                     handleChangeValue={handleChangeValue} 
-                    handleChangeDynamicObjValue={handleChangeDynamicObjValue}            
+                    handleChangeNestedRequiredFocusValue={handleChangeNestedRequiredFocusValue}
                 />
                 <SubmitPage />
                 {mutation.isError && <p>{mutation.error.message}</p>}

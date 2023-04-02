@@ -4,7 +4,7 @@ import {
   query,
   collection,
 } from "firebase/firestore";
-import { firestore } from '../../fbConfig/fbConfig.';
+import { firestore } from '../../fbConfig/fbConfig';
 import UnitCard from './UnitCard';
 
 const UnitList: React.FC = () => {
@@ -14,7 +14,6 @@ const UnitList: React.FC = () => {
     subscribe: true,
   });
   const snapshot = collectionQuery.data
-  console.log('snapshot', snapshot?.docs)
 
   return (
       <>

@@ -1,6 +1,6 @@
 import { useFirestoreCollectionMutation } from "@react-query-firebase/firestore";
 import { collection } from "firebase/firestore";
-import { firestore } from "../../fbConfig/fbConfig.";
+import { firestore } from "../../fbConfig/fbConfig";
 
 const AddExample = () => {
   const ref = collection(firestore, "units");

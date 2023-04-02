@@ -14,7 +14,6 @@ export type BoxButtonProps = {
 
 const BoxButton: React.FC<BoxButtonProps> = (props) => {
     const {onClick, label, fontSize, icon, text, iconPosition, boxWidth, boxHeight} = props
-    console.log(boxHeight)
     const boxButtonClasses = boxButtonStyles({
         height: boxHeight, 
         width: boxWidth,
