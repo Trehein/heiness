@@ -20,6 +20,11 @@ const DmHome: React.FC = () => {
             text: 'Events',
         },
         {
+            label: 'Navigate to Factions',
+            onClick: () => {navigate('/factions')},
+            text: 'Factions',
+        },
+        {
             label: 'Navigate to Items',
             onClick: () => {navigate('/items')},
             text: 'Items',
