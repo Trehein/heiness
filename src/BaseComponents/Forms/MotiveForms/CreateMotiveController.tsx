@@ -1,46 +1,44 @@
+import React, { useState } from 'react'
+import { MotiveFormStateObj } from './constants'
 import { collection } from '@firebase/firestore';
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
-import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
 import { generalStyles } from '../../../generalStyles';
 import { formStyles } from '../formStyles';
-import { ItemFormStateObj } from './constants';
 
-export const initialFactionFormObj: ItemFormStateObj = {
-    itemName: '',
-    itemType: '', // todo - update to itemType enum
-    isUnique: false,
+export const initialMotiveFormObj: MotiveFormStateObj = {
+    motiveName: '',
+    motiveType: '',
     desc: '',
-    location: '', // todo - update to location id
-    purpose: [], // todo - update to purpose enum or keep open string []?
-    effects: [], // todo - update to effects enum or keep open string []?
+    realtedSpecialItems: [], // todo update to specialItems ids
+    relatedUnits: [], // todo update to unit ids
 }
 
-const CreateItemController: React.FC = () => {
-    const ref = collection(firestore, "items");
+const CreateMotiveController: React.FC = () => {
+    const ref = collection(firestore, "motives");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()
     const formClasses = formStyles()
-    const [itemFormState, setItemFormState] = useState<ItemFormStateObj>(initialFactionFormObj)
+    const [motiveFormState, setMotiveFormState] = useState<MotiveFormStateObj>(initialMotiveFormObj)
 
     const handleChangeValue = (event: any, factionFormStateField: string) => {
-        setItemFormState({...itemFormState, [factionFormStateField]: event.target.value})
+        setMotiveFormState({...motiveFormState, [factionFormStateField]: event.target.value})
     }
 
-    const handleSubmitItem = () => {
-        mutation.mutate({...itemFormState})
-        navigate('/items')
+    const handleSubmitMotive = () => {
+        mutation.mutate({...motiveFormState})
+        navigate('/motives')
     }
 
     const SubmitPage = () => {
         return (
             <button
                 disabled={mutation.isLoading}
-                onClick={() => handleSubmitItem}
+                onClick={() => handleSubmitMotive}
             >
-                Add Item
+                Add Motive
             </button>
         )
     }
@@ -48,11 +46,11 @@ const CreateItemController: React.FC = () => {
     return (
         <div style={generalClasses.contentContainer}>
             <div style={formClasses.formContainer}>
-                Create Item Sections
+                MotiveFormContainer
                 <SubmitPage />
             </div>
         </div>
     )
 }
 
-export default CreateItemController
+export default CreateMotiveController

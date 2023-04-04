@@ -1,6 +1,7 @@
 export type ItemFormStateObj = {
     itemName: string,
     itemType: string, // todo - update to itemType enum
+    isUnique: boolean,
     desc: string,
     location: string, // todo - update to location id
     purpose: Array<any>, // todo - update to motivation enum

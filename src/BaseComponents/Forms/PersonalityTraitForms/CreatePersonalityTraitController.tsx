@@ -1,38 +1,34 @@
-import React, { useState } from 'react'
-import { LocationFormStateObj } from './constants'
 import { collection } from '@firebase/firestore';
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
 import { generalStyles } from '../../../generalStyles';
 import { formStyles } from '../formStyles';
+import { PersonalityTraitFormStateObj } from './constants';
 
-export const initialLocationFormObj: LocationFormStateObj = {
-    locationName: '',
-    uiId: '', // ex - 1.1.2 or grid square A2...
-    locationType: '', // todo - update to locationType enum
+export const initialPersonalityTraitFormStateObj: PersonalityTraitFormStateObj = {
+    name: '',
     desc: '',
-    possibleEnvironmentInteractives: [], // todo update to interactive enums
-    possibleSpecialItems: [], // todo update to item ids
-    possibleMaterials: [], // todo update to material enums
-    possibleUnitGroups: [] // todo update to unit group ids
+    traitType: '', // todo - update to personalityTrait enum
+    effects: [] // todo - update to personalityTraitEffectType type (name, desc, stat / focus, amount)
 }
 
-const CreateLocation: React.FC = () => {
+const CreatePersonalityTraitController: React.FC = () => {
     const ref = collection(firestore, "factions");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()
     const formClasses = formStyles()
-    const [locationFormState, setLocationFormState] = useState<LocationFormStateObj>(initialLocationFormObj)
+    const [personalityTraitFormState, setPersonalityTraitFormState] = useState<PersonalityTraitFormStateObj>(initialPersonalityTraitFormStateObj)
 
-    const handleChangeValue = (event: any, locationFormStateField: string) => {
-        setLocationFormState({...locationFormState, [locationFormStateField]: event.target.value})
+    const handleChangeValue = (event: any, factionFormStateField: string) => {
+        setPersonalityTraitFormState({...personalityTraitFormState, [factionFormStateField]: event.target.value})
     }
 
     const handleSubmitFaction = () => {
-        mutation.mutate({...locationFormState})
-        navigate('/locations')
+        mutation.mutate({...personalityTraitFormState})
+        navigate('/personality-traits')
     }
 
     const SubmitPage = () => {
@@ -41,7 +37,7 @@ const CreateLocation: React.FC = () => {
                 disabled={mutation.isLoading}
                 onClick={() => handleSubmitFaction}
             >
-                Add Location
+                Add Faction
             </button>
         )
     }
@@ -49,11 +45,11 @@ const CreateLocation: React.FC = () => {
     return (
         <div style={generalClasses.contentContainer}>
             <div style={formClasses.formContainer}>
-                LocationFormContainer
+                PersonalityTraitFormContainer
                 <SubmitPage />
             </div>
         </div>
     )
 }
 
-export default CreateLocation
+export default CreatePersonalityTraitController

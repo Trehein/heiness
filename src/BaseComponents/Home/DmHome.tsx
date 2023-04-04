@@ -35,6 +35,16 @@ const DmHome: React.FC = () => {
             text: 'Locations',
         },
         {
+            label: 'Navigate to Motives',
+            onClick: () => {navigate('/motives')},
+            text: 'Motives',
+        },
+        {
+            label: 'Navigate to Personality Traits',
+            onClick: () => {navigate('/personality-traits')},
+            text: 'Personality Traits',
+        },
+        {
             label: 'Navigate to Skills',
             onClick: () => {navigate('/skills')},
             text: 'Skills',

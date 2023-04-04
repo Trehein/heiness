@@ -48,7 +48,7 @@ const CreateFactionController: React.FC = () => {
     return (
         <div style={generalClasses.contentContainer}>
             <div style={formClasses.formContainer}>
-                FormContainer
+                FactionFormContainer
                 <SubmitPage />
             </div>
         </div>

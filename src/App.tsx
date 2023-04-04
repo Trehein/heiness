@@ -19,6 +19,10 @@ import ItemHome from './BaseComponents/Items/ItemHome';
 import CreateItemController from './BaseComponents/Forms/ItemForms/CreateItemController';
 import LocationHome from './BaseComponents/Locations/LocationHome';
 import CreateLocationController from './BaseComponents/Forms/LocationForms/CreateLocationController';
+import MotiveHome from './BaseComponents/Motives/MotiveHome';
+import CreateMotiveController from './BaseComponents/Forms/MotiveForms/CreateMotiveController';
+import PersonalityTraitHome from './BaseComponents/PersonalityTraits/PersonalityTraitHome';
+import CreatePersonalityTraitController from './BaseComponents/Forms/PersonalityTraitForms/CreatePersonalityTraitController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -48,6 +52,10 @@ const App: React.FC = () => {
         <Route path='/items/create' element={<CreateItemController />} />
         <Route path='/locations' element={<LocationHome />} />
         <Route path='/locations/create' element={<CreateLocationController />} />
+        <Route path='/motives' element={<MotiveHome />} />
+        <Route path='/motives/create' element={<CreateMotiveController />} />
+        <Route path='/personality-traits' element={<PersonalityTraitHome />} />
+        <Route path='/personality-traits/create' element={<CreatePersonalityTraitController />} />
         <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
         <Route path='/skills' element={<SkillHome />} />
         <Route path='/skills/create' element={<CreateSkillController />} />
