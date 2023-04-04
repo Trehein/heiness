@@ -23,6 +23,8 @@ import MotiveHome from './BaseComponents/Motives/MotiveHome';
 import CreateMotiveController from './BaseComponents/Forms/MotiveForms/CreateMotiveController';
 import PersonalityTraitHome from './BaseComponents/PersonalityTraits/PersonalityTraitHome';
 import CreatePersonalityTraitController from './BaseComponents/Forms/PersonalityTraitForms/CreatePersonalityTraitController';
+import PhysicalTraitHome from './BaseComponents/PhysicalTraits/PhysicalTraitHome';
+import CreatePhysicalTraitController from './BaseComponents/Forms/PhysicalTraitForms/CreatePhysicalTraitController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -56,6 +58,8 @@ const App: React.FC = () => {
         <Route path='/motives/create' element={<CreateMotiveController />} />
         <Route path='/personality-traits' element={<PersonalityTraitHome />} />
         <Route path='/personality-traits/create' element={<CreatePersonalityTraitController />} />
+        <Route path='/physical-traits' element={<PhysicalTraitHome />} />
+        <Route path='/physical-traits/create' element={<CreatePhysicalTraitController />} />
         <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
         <Route path='/skills' element={<SkillHome />} />
         <Route path='/skills/create' element={<CreateSkillController />} />

@@ -15,15 +15,15 @@ export const initialPersonalityTraitFormStateObj: PersonalityTraitFormStateObj =
 }
 
 const CreatePersonalityTraitController: React.FC = () => {
-    const ref = collection(firestore, "factions");
+    const ref = collection(firestore, "personalityTraits");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()
     const formClasses = formStyles()
     const [personalityTraitFormState, setPersonalityTraitFormState] = useState<PersonalityTraitFormStateObj>(initialPersonalityTraitFormStateObj)
 
-    const handleChangeValue = (event: any, factionFormStateField: string) => {
-        setPersonalityTraitFormState({...personalityTraitFormState, [factionFormStateField]: event.target.value})
+    const handleChangeValue = (event: any, personalityTraitFormStateField: string) => {
+        setPersonalityTraitFormState({...personalityTraitFormState, [personalityTraitFormStateField]: event.target.value})
     }
 
     const handleSubmitFaction = () => {
