@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MotiveFormStateObj } from './constants'
+import { PurposeFormStateObj } from './constants'
 import { collection } from '@firebase/firestore';
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
 import { useNavigate } from 'react-router-dom';
@@ -7,38 +7,36 @@ import { firestore } from '../../../fbConfig/fbConfig';
 import { generalStyles } from '../../../generalStyles';
 import { formStyles } from '../formStyles';
 
-export const initialMotiveFormObj: MotiveFormStateObj = {
-    motiveName: '',
-    motiveType: '',
+export const initialPurposeFormObj: PurposeFormStateObj = {
+    name: '',
     desc: '',
-    realtedSpecialItems: [], // todo update to specialItems ids
-    relatedUnits: [], // todo update to unit ids
+    type: '', // todo - update to purposeType enum
 }
 
-const CreateMotiveController: React.FC = () => {
-    const ref = collection(firestore, "motives");
+const CreatePurposeController: React.FC = () => {
+    const ref = collection(firestore, "purposes");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()
     const formClasses = formStyles()
-    const [motiveFormState, setMotiveFormState] = useState<MotiveFormStateObj>(initialMotiveFormObj)
+    const [purposeFormState, setPurposeFormState] = useState<PurposeFormStateObj>(initialPurposeFormObj)
 
-    const handleChangeValue = (event: any, motiveFormStateField: string) => {
-        setMotiveFormState({...motiveFormState, [motiveFormStateField]: event.target.value})
+    const handleChangeValue = (event: any, purposeFormStateField: string) => {
+        setPurposeFormState({...purposeFormState, [purposeFormStateField]: event.target.value})
     }
 
-    const handleSubmitMotive = () => {
-        mutation.mutate({...motiveFormState})
-        navigate('/motives')
+    const handleSubmitFaction = () => {
+        mutation.mutate({...purposeFormState})
+        navigate('/purposes')
     }
 
     const SubmitPage = () => {
         return (
             <button
                 disabled={mutation.isLoading}
-                onClick={() => handleSubmitMotive}
+                onClick={() => handleSubmitFaction}
             >
-                Add Motive
+                Add Purpose
             </button>
         )
     }
@@ -46,11 +44,11 @@ const CreateMotiveController: React.FC = () => {
     return (
         <div style={generalClasses.contentContainer}>
             <div style={formClasses.formContainer}>
-                MotiveFormContainer
+                PurposeFormContainer
                 <SubmitPage />
             </div>
         </div>
     )
 }
 
-export default CreateMotiveController
+export default CreatePurposeController

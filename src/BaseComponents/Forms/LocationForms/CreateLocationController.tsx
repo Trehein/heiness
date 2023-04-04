@@ -19,7 +19,7 @@ export const initialLocationFormObj: LocationFormStateObj = {
 }
 
 const CreateLocation: React.FC = () => {
-    const ref = collection(firestore, "factions");
+    const ref = collection(firestore, "locations");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()

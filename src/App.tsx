@@ -25,6 +25,8 @@ import PersonalityTraitHome from './BaseComponents/PersonalityTraits/Personality
 import CreatePersonalityTraitController from './BaseComponents/Forms/PersonalityTraitForms/CreatePersonalityTraitController';
 import PhysicalTraitHome from './BaseComponents/PhysicalTraits/PhysicalTraitHome';
 import CreatePhysicalTraitController from './BaseComponents/Forms/PhysicalTraitForms/CreatePhysicalTraitController';
+import PurposeHome from './BaseComponents/Purposes/PurposeHome';
+import CreatePurposeController from './BaseComponents/Forms/PurposeForms/CreatePurposeController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -61,6 +63,8 @@ const App: React.FC = () => {
         <Route path='/physical-traits' element={<PhysicalTraitHome />} />
         <Route path='/physical-traits/create' element={<CreatePhysicalTraitController />} />
         <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
+        <Route path='/purposes' element={<PurposeHome />} />
+        <Route path='/purposes/create' element={<CreatePurposeController />} />
         <Route path='/skills' element={<SkillHome />} />
         <Route path='/skills/create' element={<CreateSkillController />} />
         <Route path='/skills/:id' element={<SkillDetails />} />
