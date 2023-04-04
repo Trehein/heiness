@@ -30,6 +30,11 @@ const DmHome: React.FC = () => {
             text: 'Items',
         },
         {
+            label: 'Navigate to Locations',
+            onClick: () => {navigate('/locations')},
+            text: 'Locations',
+        },
+        {
             label: 'Navigate to Skills',
             onClick: () => {navigate('/skills')},
             text: 'Skills',

@@ -17,6 +17,8 @@ import FactionHome from './BaseComponents/Factions/FactionHome';
 import CreateFactionController from './BaseComponents/Forms/FactionForms/CreateFactionController';
 import ItemHome from './BaseComponents/Items/ItemHome';
 import CreateItemController from './BaseComponents/Forms/ItemForms/CreateItemController';
+import LocationHome from './BaseComponents/Locations/LocationHome';
+import CreateLocationController from './BaseComponents/Forms/LocationForms/CreateLocationController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -44,6 +46,8 @@ const App: React.FC = () => {
         <Route path='/factions/create' element={<CreateFactionController />} />
         <Route path='/items' element={<ItemHome />} />
         <Route path='/items/create' element={<CreateItemController />} />
+        <Route path='/locations' element={<LocationHome />} />
+        <Route path='/locations/create' element={<CreateLocationController />} />
         <Route path='/player-campaigns' element={<div>Player Campaigns</div>} />
         <Route path='/skills' element={<SkillHome />} />
         <Route path='/skills/create' element={<CreateSkillController />} />
