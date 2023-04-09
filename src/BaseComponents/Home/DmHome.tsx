@@ -60,7 +60,12 @@ const DmHome: React.FC = () => {
             text: 'Skills',
         },
         {
-            label: 'Navigate to Units',
+            label: 'Navigate to Strengths or Weaknesses',
+            onClick: () => {navigate('/strengths-or-weaknesses')},
+            text: 'Strengths or Weaknesses',
+        },
+        {
+            label: 'Navigate to Stories',
             onClick: () => {navigate('/stories')},
             text: 'Stories',
         },

@@ -27,6 +27,8 @@ import PhysicalTraitHome from './BaseComponents/PhysicalTraits/PhysicalTraitHome
 import CreatePhysicalTraitController from './BaseComponents/Forms/PhysicalTraitForms/CreatePhysicalTraitController';
 import PurposeHome from './BaseComponents/Purposes/PurposeHome';
 import CreatePurposeController from './BaseComponents/Forms/PurposeForms/CreatePurposeController';
+import CreateStrengthOrWeaknessController from './BaseComponents/Forms/StrengthOrWeaknessForms/CreateStrengthOrWeaknessController';
+import StrengthOrWeaknessHome from './BaseComponents/StrengthsOrWeaknesses/StrengthOrWeaknessHome';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -68,6 +70,8 @@ const App: React.FC = () => {
         <Route path='/skills' element={<SkillHome />} />
         <Route path='/skills/create' element={<CreateSkillController />} />
         <Route path='/skills/:id' element={<SkillDetails />} />
+        <Route path='/strengths-or-weaknesses' element={<StrengthOrWeaknessHome />} />
+        <Route path='/strengths-or-weaknesses/create' element={<CreateStrengthOrWeaknessController />} />
         <Route path='/stories' element={<div>Stories</div>} />
         <Route path='/units' element={<UnitHome />} />
       </Routes>
