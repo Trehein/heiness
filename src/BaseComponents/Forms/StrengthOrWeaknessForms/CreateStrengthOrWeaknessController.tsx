@@ -16,7 +16,7 @@ export const initialStrengthOrWeaknessFormStateObj: StrengthOrWeaknessFormStateO
 }
 
 const CreateStrengthOrWeaknessController: React.FC = () => {
-    const ref = collection(firestore, "strengthOrWeakness");
+    const ref = collection(firestore, "strengthsOrWeaknesses");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const generalClasses = generalStyles()

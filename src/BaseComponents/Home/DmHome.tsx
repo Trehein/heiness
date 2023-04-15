@@ -77,7 +77,7 @@ const DmHome: React.FC = () => {
     ]
 
     return (
-        <div style={generalClasses.screenContainer}>
+        <div style={generalClasses.contentContainer}>
             <BoxArray 
                 ChildComponentArray={MapToBoxButtonArray({
                     dataArray: dmHomeButtonData,
