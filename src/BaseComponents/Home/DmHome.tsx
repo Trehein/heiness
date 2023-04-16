@@ -1,11 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { MapToBoxButtonArray } from '../../ComponentArrays/MapToBoxButtonArray/MapToBoxButtonArray';
-import { generalStyles } from '../../generalStyles'
+import { baseStyles } from '../../globalStyles/baseStyles'
 import BoxArray from '../BoxArray/BoxArray';
 
 const DmHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
 
     const dmHomeButtonData: any[] = [
@@ -77,7 +77,7 @@ const DmHome: React.FC = () => {
     ]
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <BoxArray 
                 ChildComponentArray={MapToBoxButtonArray({
                     dataArray: dmHomeButtonData,

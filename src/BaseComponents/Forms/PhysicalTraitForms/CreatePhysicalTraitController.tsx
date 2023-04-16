@@ -3,7 +3,7 @@ import { collection } from "firebase/firestore";
 import { firestore } from "../../../fbConfig/fbConfig";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { generalStyles } from "../../../generalStyles";
+import { baseStyles } from "../../../globalStyles/baseStyles";
 import { formStyles } from "../formStyles";
 import { PhysicalTraitFormStateObj } from "./constants";
 
@@ -19,7 +19,7 @@ const CreatePhysicalTraitController: React.FC = () => {
   const ref = collection(firestore, "physicalTraits");
   const mutation = useFirestoreCollectionMutation(ref)
   const navigate = useNavigate()
-  const generalClasses = generalStyles()
+  const baseClasses = baseStyles()
   const formClasses = formStyles()
   const [physicalTraitFormState, setPhysicalTraitFormState] = useState<PhysicalTraitFormStateObj>(initialPhysicalTraitFormObj)
 
@@ -44,7 +44,7 @@ const CreatePhysicalTraitController: React.FC = () => {
   }
 
   return (
-      <div style={generalClasses.contentContainer}>
+      <div style={baseClasses.contentContainer}>
           <div style={formClasses.formContainer}>
               PhysicalTraitFormContainer
               <SubmitPage />

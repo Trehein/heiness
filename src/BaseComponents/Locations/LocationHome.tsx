@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { generalStyles } from '../../generalStyles';
+import { baseStyles } from '../../globalStyles/baseStyles';
 import LocationList from './LocationList';
 
 const FactionHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
     
     const CreateLocationButton = () => {
@@ -18,7 +18,7 @@ const FactionHome: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <CreateLocationButton />
             <LocationList />
         </div>

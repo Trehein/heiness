@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { generalStyles } from '../../generalStyles';
+import { baseStyles } from '../../globalStyles/baseStyles';
 import PersonalityTraitList from './PersonalityTraitList';
 
 const PersonalityTraitHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
     
     const CreatePersonalityTraitButton = () => {
@@ -18,7 +18,7 @@ const PersonalityTraitHome: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <CreatePersonalityTraitButton />
             <PersonalityTraitList />
         </div>

@@ -3,7 +3,7 @@ import { collection } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firestore } from "../../../../fbConfig/fbConfig";
-import { generalStyles } from "../../../../generalStyles";
+import { baseStyles } from "../../../../globalStyles/baseStyles";
 import { formStyles } from "../../formStyles";
 import { SkillFormStateObj } from "../constants";
 import AreaRangeSection, { AreaEnums } from "./CreateSkillFormSections/AreaRangeSection";
@@ -45,7 +45,7 @@ const CreateSkillController = () => {
     const mutation = useFirestoreCollectionMutation(ref);
 
     const navigate = useNavigate();
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [skillFormState, setSkillFormState] = useState<SkillFormStateObj>(initialSkillFormObj)
 
@@ -95,7 +95,7 @@ const CreateSkillController = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 <TitleAndDescSection 
                     skillFormStateObj={skillFormState} 

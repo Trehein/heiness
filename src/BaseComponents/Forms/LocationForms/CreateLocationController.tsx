@@ -4,7 +4,7 @@ import { collection } from '@firebase/firestore';
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 
 export const initialLocationFormObj: LocationFormStateObj = {
@@ -22,7 +22,7 @@ const CreateLocation: React.FC = () => {
     const ref = collection(firestore, "locations");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [locationFormState, setLocationFormState] = useState<LocationFormStateObj>(initialLocationFormObj)
 
@@ -47,7 +47,7 @@ const CreateLocation: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 LocationFormContainer
                 <SubmitPage />

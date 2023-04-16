@@ -3,7 +3,7 @@ import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 import { FactionFormStateObj } from './constants';
 
@@ -21,7 +21,7 @@ const CreateFactionController: React.FC = () => {
     const ref = collection(firestore, "factions");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [factionFormState, setFactionFormState] = useState<FactionFormStateObj>(initialFactionFormObj)
 
@@ -46,7 +46,7 @@ const CreateFactionController: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 FactionFormContainer
                 <SubmitPage />

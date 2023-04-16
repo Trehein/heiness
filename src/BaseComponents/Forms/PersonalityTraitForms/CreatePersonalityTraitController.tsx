@@ -3,7 +3,7 @@ import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 import { PersonalityTraitFormStateObj } from './constants';
 
@@ -18,7 +18,7 @@ const CreatePersonalityTraitController: React.FC = () => {
     const ref = collection(firestore, "personalityTraits");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const generalClasses = baseStyles()
     const formClasses = formStyles()
     const [personalityTraitFormState, setPersonalityTraitFormState] = useState<PersonalityTraitFormStateObj>(initialPersonalityTraitFormStateObj)
 

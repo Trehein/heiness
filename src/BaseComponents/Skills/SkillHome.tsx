@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { generalStyles } from '../../generalStyles'
+import { baseStyles } from '../../globalStyles/baseStyles'
 import SkillList from './SkillList'
 
 const SkillHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
 
     const CreateSkillButton = () => {
@@ -18,7 +18,7 @@ const SkillHome: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <CreateSkillButton />
             <SkillList />
         </div>

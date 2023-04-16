@@ -1,4 +1,4 @@
-export const generalStyles = () => {
+export const baseStyles = () => {
     return {
         screenContainer: {
             position: 'absolute' as 'absolute',

@@ -1,13 +1,13 @@
 import React from 'react'
-import { generalStyles } from '../../generalStyles'
+import { baseStyles } from '../../globalStyles/baseStyles'
 import AddExample from '../AddExample/AddExample'
 import UnitList from './UnitList'
 
 const UnitHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
 
     return (
-        <div style={generalClasses.screenContainer}>
+        <div style={baseClasses.screenContainer}>
             <AddExample />
             <UnitList />
         </div>

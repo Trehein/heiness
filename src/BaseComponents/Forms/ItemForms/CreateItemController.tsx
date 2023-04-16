@@ -3,7 +3,7 @@ import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 import { ItemFormStateObj } from './constants';
 
@@ -21,7 +21,7 @@ const CreateItemController: React.FC = () => {
     const ref = collection(firestore, "items");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [itemFormState, setItemFormState] = useState<ItemFormStateObj>(initialFactionFormObj)
 
@@ -46,7 +46,7 @@ const CreateItemController: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 Create Item Sections
                 <SubmitPage />

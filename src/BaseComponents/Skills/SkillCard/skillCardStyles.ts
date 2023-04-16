@@ -1,18 +1,13 @@
-export const breakpointCalc = () => {
-    if(window.innerWidth > 1000) {
-        return `${1/4 * 100}%`
-    }
-    if(window.innerWidth > 420) {
-        return `${1/6 * 100}%`
-    } else {
-        return '100%'
-    }
-}
+import { widthBreakpointCalc } from "../../../globalStyles/breakpoints"
 
 export const skillCardStyles = () => {
     return {
         cardContainer: {
-            width: `${breakpointCalc()}`,
+            width: `${widthBreakpointCalc({breakpoints: [
+                {screenSizeBreakpoint: 420, numberOfColumns: 1},
+                {screenSizeBreakpoint: 700, numberOfColumns: 4},
+                {screenSizeBreakpoint: 1500, numberOfColumns: 8},
+            ]})}`,
         },
         card: {
             width: '95%',
@@ -71,4 +66,8 @@ export const UseDifficultyCoolDownSection = () => {
     return {
 
     }
+}
+
+function breakpointCalc(arg0: { breakpoints: never[] }) {
+    throw new Error("Function not implemented.")
 }

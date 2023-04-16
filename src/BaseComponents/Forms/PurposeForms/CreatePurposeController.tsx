@@ -4,7 +4,7 @@ import { collection } from '@firebase/firestore';
 import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 
 export const initialPurposeFormObj: PurposeFormStateObj = {
@@ -17,7 +17,7 @@ const CreatePurposeController: React.FC = () => {
     const ref = collection(firestore, "purposes");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [purposeFormState, setPurposeFormState] = useState<PurposeFormStateObj>(initialPurposeFormObj)
 
@@ -42,7 +42,7 @@ const CreatePurposeController: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 PurposeFormContainer
                 <SubmitPage />

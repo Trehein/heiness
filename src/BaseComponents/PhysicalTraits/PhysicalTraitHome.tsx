@@ -1,10 +1,10 @@
 import React from 'react'
 import PhysicalTraitList from './PhysicalTraitList';
 import { useNavigate } from 'react-router-dom';
-import { generalStyles } from '../../generalStyles';
+import { baseStyles } from '../../globalStyles/baseStyles';
 
 const PhysicalTraitHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
     
     const CreatePhysicalTraitButton = () => {
@@ -18,7 +18,7 @@ const PhysicalTraitHome: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <CreatePhysicalTraitButton />
             <PhysicalTraitList />
         </div>

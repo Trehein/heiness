@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MapToBoxButtonArray } from '../../ComponentArrays/MapToBoxButtonArray/MapToBoxButtonArray'
-import { generalStyles } from '../../generalStyles'
+import { baseStyles } from '../../globalStyles/baseStyles'
 import BoxArray from '../BoxArray/BoxArray'
 
 const RoleSelection: React.FC = () => {
@@ -20,10 +20,10 @@ const RoleSelection: React.FC = () => {
         }
     ]
 
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
 
     return (
-        <div style={generalClasses.screenContainer}>
+        <div style={baseClasses.screenContainer}>
             <BoxArray 
                 ChildComponentArray={MapToBoxButtonArray({ 
                     dataArray: roleSelectionButtonData, 

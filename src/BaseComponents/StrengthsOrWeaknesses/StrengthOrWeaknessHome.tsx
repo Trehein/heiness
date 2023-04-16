@@ -1,10 +1,10 @@
 import React from 'react'
 import StrengthOrWeaknessList from './StrengthOrWeaknessList';
-import { generalStyles } from '../../generalStyles';
+import { baseStyles } from '../../globalStyles/baseStyles';
 import { useNavigate } from 'react-router-dom';
 
 const StrengthOrWeaknessHome: React.FC = () => {
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const navigate = useNavigate();
     
     const CreateStrengthOrWeaknessButton = () => {
@@ -18,7 +18,7 @@ const StrengthOrWeaknessHome: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <CreateStrengthOrWeaknessButton />
             <StrengthOrWeaknessList />
         </div>

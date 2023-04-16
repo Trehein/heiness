@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { MapToBoxButtonArray } from '../../ComponentArrays/MapToBoxButtonArray/MapToBoxButtonArray'
-import { generalStyles } from '../../generalStyles'
 import BoxArray from '../BoxArray/BoxArray'
 import { FormTypeEnum } from '../Forms/Enums/FormTypeEnum'
 import FormSwitch from '../Forms/FormSwitch'
+import { baseStyles } from '../../globalStyles/baseStyles'
 
 const Authentication: React.FC = () => {
     const [selectedFormType, setSelectedFormType] = useState<undefined | FormTypeEnum>(undefined)
@@ -21,10 +21,10 @@ const Authentication: React.FC = () => {
         }
     ]
 
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
 
     return (
-        <div style={generalClasses.screenContainer}>
+        <div style={baseClasses.screenContainer}>
             {
                 selectedFormType === undefined ? 
                     <BoxArray 

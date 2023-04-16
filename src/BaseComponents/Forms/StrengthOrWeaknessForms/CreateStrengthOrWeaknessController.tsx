@@ -3,7 +3,7 @@ import { useFirestoreCollectionMutation } from '@react-query-firebase/firestore'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { firestore } from '../../../fbConfig/fbConfig';
-import { generalStyles } from '../../../generalStyles';
+import { baseStyles } from '../../../globalStyles/baseStyles';
 import { PurposeFormStateObj } from '../PurposeForms/constants';
 import { formStyles } from '../formStyles';
 import { StrengthOrWeaknessFormStateObj } from './constants';
@@ -19,7 +19,7 @@ const CreateStrengthOrWeaknessController: React.FC = () => {
     const ref = collection(firestore, "strengthsOrWeaknesses");
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
-    const generalClasses = generalStyles()
+    const baseClasses = baseStyles()
     const formClasses = formStyles()
     const [strengthOrWeaknessFormState, setStrengthOrWeaknessPurposeFormState] = useState<PurposeFormStateObj>(initialStrengthOrWeaknessFormStateObj)
 
@@ -44,7 +44,7 @@ const CreateStrengthOrWeaknessController: React.FC = () => {
     }
 
     return (
-        <div style={generalClasses.contentContainer}>
+        <div style={baseClasses.contentContainer}>
             <div style={formClasses.formContainer}>
                 StrengthOrWeaknessFormContainer
                 <SubmitPage />
