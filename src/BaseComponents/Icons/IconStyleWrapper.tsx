@@ -2,13 +2,15 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 
 export type IconStyleWrapperProps = {
-    children: React.ReactNode
+    children: React.ReactNode,
+    styleParams: any
 }
 
 const IconStyleWrapper: React.FC<IconStyleWrapperProps> = (props) => {
-    const {children} = props
+    const {styleParams, children} = props
+    console.log(styleParams)
     return (
-        <IconContext.Provider value={{}}>
+        <IconContext.Provider value={styleParams}>
             {children}
         </IconContext.Provider>
     )

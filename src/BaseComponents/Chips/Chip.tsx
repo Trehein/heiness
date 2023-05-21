@@ -4,19 +4,37 @@ import Icon from '../Icons/Icon'
 
 export type ChipStylesParams = {
     backgroundColor: string,
-    textColor: string | undefined
+    textColor?: string | undefined,
+    fontSize?: string | undefined,
+    iconSize?: string | undefined,
+    isOutlined?: boolean
 }
 
 export const chipStyles = (params: ChipStylesParams) => {
-    const {backgroundColor, textColor} = params
+    const {backgroundColor, textColor, fontSize, iconSize, isOutlined} = params
     return {
         chipContainer: {
-            border: '1px solid red',
+            border: isOutlined ? '1.5px solid black' : 'none',
             backgroundColor: backgroundColor,
             color: textColor,
-            borderRadius: '25%',
+            borderRadius: '2em',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            margin: '.25em',
+            fontSize: fontSize ? fontSize : '.75em',
+            padding: '.5em .75em',
+            height: 'fit-content'
+        },
+        chipIconContainer: {
+            marginRight: '.5em'
+        },
+        text: {
+            fontWeight: 800
+        },
+        chipIcon: {
+            color: 'black',
+            size: iconSize ? iconSize : '1.25em',
+            stroke: 'orange',
         }
     }
 }
@@ -24,22 +42,25 @@ export const chipStyles = (params: ChipStylesParams) => {
 export type ChipProps = {
     text: string,
     primaryColor: string,
-    iconEnum?: IconEnum, // todo - update when IconEnum in place
+    iconEnum?: IconEnum, 
     isOutlined?: boolean,
-    secondaryColor?: string,
+    // secondaryColor?: string,
     textColor?: string,
 }
 
 const Chip: React.FC<ChipProps> = (props) => {
-    const {iconEnum, isOutlined, text, textColor, primaryColor, secondaryColor} = props
+    const {iconEnum, text, textColor, primaryColor, isOutlined} = props
     const chipClasses = chipStyles({
         backgroundColor: primaryColor,
-        textColor: textColor
+        textColor: textColor,
+        isOutlined: isOutlined
     })
     return (
         <div style={chipClasses.chipContainer}>
-            {iconEnum && <Icon iconEnum={iconEnum}/>}
-            {text}
+            {iconEnum && <div style={chipClasses.chipIconContainer}><Icon iconEnum={iconEnum} styleParams={chipClasses.chipIcon}/></div>}
+            <div style={chipClasses.text}>
+                {text}
+            </div>
         </div>
     )
 }

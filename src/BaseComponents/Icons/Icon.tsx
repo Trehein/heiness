@@ -4,13 +4,15 @@ import IconSelector from './IconSelector'
 import IconStyleWrapper from './IconStyleWrapper'
 
 export type IconProps = {
-    iconEnum: IconEnum
+    iconEnum: IconEnum,
+    styleParams: any
 }
 
 const Icon: React.FC<IconProps> = (props) => {
-    const {iconEnum} = props
+    const {iconEnum, styleParams} = props
+
     return (
-        <IconStyleWrapper>
+        <IconStyleWrapper styleParams={styleParams}>
             <IconSelector iconEnum={iconEnum}/>
         </IconStyleWrapper>
     )

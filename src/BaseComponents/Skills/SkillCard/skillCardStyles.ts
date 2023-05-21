@@ -5,8 +5,8 @@ export const skillCardStyles = () => {
         cardContainer: {
             width: `${widthBreakpointCalc({breakpoints: [
                 {screenSizeBreakpoint: 420, numberOfColumns: 1},
-                {screenSizeBreakpoint: 700, numberOfColumns: 4},
-                {screenSizeBreakpoint: 1500, numberOfColumns: 8},
+                {screenSizeBreakpoint: 700, numberOfColumns: 3},
+                {screenSizeBreakpoint: 1500, numberOfColumns: 6},
             ]})}`,
         },
         card: {
@@ -18,10 +18,16 @@ export const skillCardStyles = () => {
         },
         cardSectionContainer: {
             width: '95%',
-            border: '1px solid green',
+            // border: '1px solid green',
             margin: '.25em auto',
             display: 'flex',
         
+        },
+        titleContainer: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: 'auto'
         }
     }
 }
