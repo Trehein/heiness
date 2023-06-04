@@ -43,17 +43,19 @@ export type ChipProps = {
     text: string,
     primaryColor: string,
     iconEnum?: IconEnum, 
+    iconSize?: string,
     isOutlined?: boolean,
     // secondaryColor?: string,
     textColor?: string,
 }
 
 const Chip: React.FC<ChipProps> = (props) => {
-    const {iconEnum, text, textColor, primaryColor, isOutlined} = props
+    const {iconEnum, text, textColor, primaryColor, isOutlined, iconSize} = props
     const chipClasses = chipStyles({
         backgroundColor: primaryColor,
         textColor: textColor,
-        isOutlined: isOutlined
+        isOutlined: isOutlined,
+        iconSize: iconSize
     })
     return (
         <div style={chipClasses.chipContainer}>

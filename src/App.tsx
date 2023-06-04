@@ -36,9 +36,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // ensures userAuth or reroutes to landing
-    if (tokenResult.data?.token.token === undefined) {
-      navigate('/')
-    }
+    // uncomment below line for prod
+    // if (tokenResult.data?.token.token === undefined) {
+    //   navigate('/')
+    // }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tokenResult.isLoading])
 

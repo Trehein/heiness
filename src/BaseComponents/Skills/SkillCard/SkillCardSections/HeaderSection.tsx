@@ -43,8 +43,14 @@ const HeaderSection: React.FC<HeaderSectionProps> = (props) => {
 
     return (
         <div className='cardSectionContainer' style={skillCardClasses.cardSectionContainer}>
-            <Chip text={useDifficulty} primaryColor={'white'} iconEnum={IconEnum.Difficulty} isOutlined={true}/>
-            <div style={skillCardClasses.titleContainer}>Title {title}</div>
+            <Chip 
+                text={useDifficulty} 
+                primaryColor={'white'} 
+                iconEnum={IconEnum.Difficulty} 
+                isOutlined={true}
+                iconSize='1em'
+            />
+            <div style={skillCardClasses.titleContainer}>{title}</div>
 
             <Chip text={`AP ${actionPointCost}`} primaryColor={'white'} isOutlined={true}/>
             {filteredCardCostKeys.map((cardCostKey: any) => {

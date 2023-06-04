@@ -7,13 +7,24 @@ export type AreaRangeSectionProps = {
     range: number
 }
 
+export const areaRangeSectionStyles = () => {
+    return {
+        areaRangeSectionContainer: {
+            width: '50%',
+            fontSize: '.75em',
+            justifyContent: 'start'
+        }
+    }
+}
+
 const AreaRangeSection: React.FC<AreaRangeSectionProps> = (props) => {
     const { areaOfEffect, areaType, range } = props
+    const areaRangeClasses = areaRangeSectionStyles()
     return (
-        <div>
+        <div style={areaRangeClasses.areaRangeSectionContainer}>
+            <div>Range: {range}</div>
             <div>Area of Effect: {areaOfEffect}</div>
             <div>Area Type: {areaType}</div>
-            <div>Range: {range}</div>
         </div>
     )
 }

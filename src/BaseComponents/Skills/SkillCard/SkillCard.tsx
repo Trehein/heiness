@@ -31,13 +31,21 @@ const SkillCard: React.FC<SkillCardProps> = (props) => {
         <div className={'cardContainer'} style={skillCardClasses.cardContainer}>
             <div className={'card'} style={skillCardClasses.card}>
                 <HeaderSection title={data.title} actionPointCost={data.actionPointCost} cardCost={data.cardCost} useDifficulty={data.useDifficulty} /> 
-                <RequirementSection requiredFocus={data.requiredFocus}/>
-                <CoolDownSection coolDown={data.coolDown} />
                 <DescSection desc={data.desc}/>
-                <DamageSection damage={data.damage} damageType={data.damageType} />
-                <TargetSection affected={data.affected} target={data.target} />
-                <StatusSection setStatus={data.setStatus} statusDuration={data.statusDuration} />
-                <AreaRangeSection areaOfEffect={data.areaOfEffect} areaType={data.areaType} range={data.range} />
+                <RequirementSection requiredFocus={data.requiredFocus}/>
+                <div style={skillCardClasses.cardSectionContainer}>
+                    <DamageSection damage={data.damage} damageType={data.damageType} />
+                    <TargetSection affected={data.affected} target={data.target} />
+                </div>
+                <div style={skillCardClasses.cardSectionContainer}>
+                    <StatusSection 
+                        setStatus={data.setStatus} 
+                        statusDuration={data.statusDuration}
+                        coolDown={data.coolDown} 
+                    />
+                    <AreaRangeSection areaOfEffect={data.areaOfEffect} areaType={data.areaType} range={data.range} />
+                </div>
+
                 <Link key={docSnapshot.id} to={`/skills/${docSnapshot.id}`}>
                     <div>
                         {data.title}
