@@ -1,8 +1,8 @@
 import React from 'react'
-import { StatusEnums } from '../../../Forms/SkillForms/CreateSkill/CreateSkillFormSections/StatusSection'
+import { StatusEnum } from '../../../../constants/enums/statusEnums'
 
 export type StatusSectionProps = {
-    setStatus: StatusEnums
+    setStatus: StatusEnum
     statusDuration: number
     coolDown: number
 }

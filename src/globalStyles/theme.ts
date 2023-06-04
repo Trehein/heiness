@@ -1,4 +1,5 @@
-import { BaseAttributeEnum, UseDifficultyEnum } from "../constants/enums"
+import { BaseAttributeEnum } from "../constants/enums/baseAttributeEnums"
+import { UseDifficultyEnum } from "../constants/enums/enums"
 import { baseColorPalette } from "./colors"
 
 export const baseTheme = {

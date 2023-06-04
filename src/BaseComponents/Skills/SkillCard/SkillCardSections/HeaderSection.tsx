@@ -3,7 +3,7 @@ import { skillCardStyles } from '../skillCardStyles'
 import Chip from '../../../Chips/Chip'
 import { IconEnum } from '../../../Icons/IconEnums'
 import { baseTheme } from '../../../../globalStyles/theme'
-import { BaseAttributeEnum } from '../../../../constants/enums'
+import { BaseAttributeEnum } from '../../../../constants/enums/baseAttributeEnums'
 
 export type HeaderSectionProps = {
     actionPointCost: number

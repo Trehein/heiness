@@ -7,7 +7,7 @@ import { baseStyles } from '../../../globalStyles/baseStyles';
 import { formStyles } from '../formStyles';
 import { ItemFormStateObj } from './constants';
 
-export const initialFactionFormObj: ItemFormStateObj = {
+export const initialItemFormObj: ItemFormStateObj = {
     itemName: '',
     itemType: '', // todo - update to itemType enum
     isUnique: false,
@@ -17,17 +17,17 @@ export const initialFactionFormObj: ItemFormStateObj = {
     effects: [], // todo - update to effects enum or keep open string []?
 }
 
-const CreateItemController: React.FC = () => {
-    const ref = collection(firestore, "items");
+const CreateItemController: React.FC = () => { 
+    const ref = collection(firestore, "items"); 
     const mutation = useFirestoreCollectionMutation(ref)
     const navigate = useNavigate()
     const baseClasses = baseStyles()
     const formClasses = formStyles()
-    const [itemFormState, setItemFormState] = useState<ItemFormStateObj>(initialFactionFormObj)
+    const [itemFormState, setItemFormState] = useState<ItemFormStateObj>(initialItemFormObj)
 
-    const handleChangeValue = (event: any, factionFormStateField: string) => {
-        setItemFormState({...itemFormState, [factionFormStateField]: event.target.value})
-    }
+    const handleChangeValue = (event: any, itemFormStateField: string) => {
+        setItemFormState({...itemFormState, [itemFormStateField]: event.target.value})
+    } 
 
     const handleSubmitItem = () => {
         mutation.mutate({...itemFormState})

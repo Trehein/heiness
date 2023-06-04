@@ -9,10 +9,11 @@ import { SkillFormStateObj } from "../constants";
 import AreaRangeSection, { AreaEnums } from "./CreateSkillFormSections/AreaRangeSection";
 import DamageSection, { DamageTypeEnums } from "./CreateSkillFormSections/DamageSection";
 import RequiredFocusSection, { initialFocusObj } from "./CreateSkillFormSections/RequiredFocusSection";
-import StatusSection, { StatusEnums } from "./CreateSkillFormSections/StatusSection";
+import StatusSection from "./CreateSkillFormSections/StatusSection";
 import TargetSection, { TargetEnums } from "./CreateSkillFormSections/TargetSection";
 import TitleAndDescSection from "./CreateSkillFormSections/TitleAndDescSection";
 import UseCostSection, { initialBaseAttributeObj } from "./CreateSkillFormSections/UseCostSection";
+import { StatusEnum } from "../../../../constants/enums/statusEnums";
 
 export const initialSkillFormObj: SkillFormStateObj = {
     title: '',
@@ -26,7 +27,7 @@ export const initialSkillFormObj: SkillFormStateObj = {
     damage: 0,
     damageType: DamageTypeEnums.None,
 
-    setStatus: StatusEnums.None,
+    setStatus: StatusEnum.None,
     statusDuration: 0,
 
     target: TargetEnums.Any,
