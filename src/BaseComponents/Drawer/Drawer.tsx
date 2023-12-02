@@ -22,13 +22,11 @@ const Drawer: React.FC<DrawerProps> = (props) => {
     const backgroundTransition = useTransition(drawerStoreState.isOpen, {
         from: { opacity: 0 },
         enter: { opacity: 1,       
-          height: '100vh',
+          height: '95.5vh',
           position: 'absolute',
           zIndex: '99' },
         leave: { opacity: 0 },
         reverse: drawerStoreState.isOpen,
-        // delay: 200,
-        // config: config.molasses,
       })
 
       const drawerTransition = useTransition(drawerStoreState.isOpen, {
@@ -49,7 +47,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                     <div 
                         style={{
                         width: screenSizeFunction() ? '100vw' : '33vw', 
-                        height: '100vh', 
+                        height: '95.5vh', 
                         backgroundColor: 'white', 
                         // opacity: .65,
                         zIndex: 100,
@@ -64,7 +62,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                     <div 
                         style={{
                         width: '97.5vw', 
-                        height: '100vh', 
+                        height: '95.5vh', 
                         backgroundColor: 'black', 
                         opacity: .65,
                         zIndex: 99,

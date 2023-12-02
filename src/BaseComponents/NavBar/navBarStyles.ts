@@ -7,7 +7,12 @@ export const navBarStyles = () => {
             width: '100%',
             zIndex: 10,
             borderBottom: '1px solid black',
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            display: 'flex',
+            alignItems: 'center'
+        },
+        iconButtonContainer: {
+            margin: '0px .5em'
         }
     }
 }

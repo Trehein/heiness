@@ -1,4 +1,4 @@
-import { SetState, StoreApi, UseBoundStore, create } from "zustand"
+import { StoreApi, UseBoundStore, create } from "zustand"
 
 export enum DrawerContentEnum {
     Nav = 'Nav'

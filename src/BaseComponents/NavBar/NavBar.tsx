@@ -1,6 +1,8 @@
 import React from 'react'
 import { navBarStyles } from './navBarStyles'
 import drawerStore, { DrawerContentEnum, DrawerStoreState } from '../../stores/drawerStore'
+import IconButton from '../Buttons/IconButton'
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const NavBar: React.FC = () => {
     const navBarClasses = navBarStyles()
@@ -12,16 +14,14 @@ const NavBar: React.FC = () => {
         })
     )
 
-    console.log(drawerStoreState)
-
     return (
         <div style={navBarClasses.navBarContainer}>
-            <button
-                onClick={() => setDrawerStoreState({isOpen: !drawerStoreState.isOpen, drawerContentEnum: !drawerStoreState.isOpen ? DrawerContentEnum.Nav : undefined})}
-            >
-                NavButton
-            </button>
-            NavBar
+            <div style={navBarClasses.iconButtonContainer}>
+                <IconButton 
+                    IconComponent={<GiHamburgerMenu />} 
+                    onClick={() => setDrawerStoreState({isOpen: !drawerStoreState.isOpen, drawerContentEnum: !drawerStoreState.isOpen ? DrawerContentEnum.Nav : undefined})}            
+                />
+            </div>
         </div>
     )
 }

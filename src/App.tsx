@@ -29,7 +29,7 @@ import PurposeHome from './BaseComponents/Purposes/PurposeHome';
 import CreatePurposeController from './BaseComponents/Forms/PurposeForms/CreatePurposeController';
 import CreateStrengthOrWeaknessController from './BaseComponents/Forms/StrengthOrWeaknessForms/CreateStrengthOrWeaknessController';
 import StrengthOrWeaknessHome from './BaseComponents/StrengthsOrWeaknesses/StrengthOrWeaknessHome';
-import Drawer from './BaseComponents/Drawer/Drawer';
+import DrawerController from './BaseComponents/Drawer/DrawerController';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -47,7 +47,8 @@ const App: React.FC = () => {
   return (
     <div style={{fontFamily: 'sans-serif', marginTop: 0}}>
       <NavBar />
-      <Drawer children={undefined} />
+
+      <DrawerController />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/player-home' element={<div>Player Home</div>} />
