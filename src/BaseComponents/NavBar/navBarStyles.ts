@@ -1,10 +1,9 @@
 export const navBarStyles = () => {
     return {
         navBarContainer: {
-            position: 'fixed' as 'fixed',
-            display: 'flex',
-            alignItems: 'center',
-            height: window.innerHeight * .05,
+            position: 'sticky' as 'sticky',
+            top: 0,
+            height: '3em',
             width: '100%',
             zIndex: 10,
             borderBottom: '1px solid black',

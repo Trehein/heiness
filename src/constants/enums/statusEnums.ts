@@ -23,6 +23,7 @@ export enum StatusEnum {
     Burning = 'Burning',
     Chickenified = 'Chickenified',
     Chilled = 'Chilled',
+    Concussed = "Concussed",
     Crippled = 'Crippled',
     Crushed = 'Crushed',
     Cursed = 'Cursed',
@@ -111,7 +112,7 @@ export enum StatusEnum {
     Tracking = 'Tracking',
     TreeStride = 'TreeStride',
     VampiricAura = 'Vampiric Aura',
-    VenomCoating = 'Venom Coating'
+    VenomCoating = 'Venom Coating',
 } 
 
 export const statusArray: Array<StatusEnum> = [
@@ -139,6 +140,7 @@ export const statusArray: Array<StatusEnum> = [
     StatusEnum.Burning,
     StatusEnum.Chickenified,
     StatusEnum.Chilled,
+    StatusEnum.Concussed,
     StatusEnum.Crippled,
     StatusEnum.Crushed,
     StatusEnum.Cursed,

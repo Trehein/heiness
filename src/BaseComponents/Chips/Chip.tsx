@@ -14,7 +14,7 @@ export const chipStyles = (params: ChipStylesParams) => {
     const {backgroundColor, textColor, fontSize, iconSize, isOutlined} = params
     return {
         chipContainer: {
-            border: isOutlined ? '1.5px solid black' : 'none',
+            border: isOutlined ? '2px solid black' : 'none',
             backgroundColor: backgroundColor,
             color: textColor,
             borderRadius: '2em',
