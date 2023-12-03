@@ -34,7 +34,7 @@ export const NavButton: React.FC<NavButtonProps> = (props) => {
         </button>
     )
 }
-
+    
 const NavDrawer: React.FC = () => {
     const navigate = useNavigate();
     const navDrawerClasses = navDrawerStyles()
@@ -42,7 +42,7 @@ const NavDrawer: React.FC = () => {
         (state: {setDrawerStoreState: any}) => ({
             setDrawerStoreState: state.setDrawerStoreState
         })
-    )
+    )  
 
     const navRoutes: any[] = [
         {

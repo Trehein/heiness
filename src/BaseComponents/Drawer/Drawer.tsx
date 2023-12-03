@@ -25,8 +25,6 @@ const Drawer: React.FC<DrawerProps> = (props) => {
         document.body.clientHeight, document.documentElement.clientHeight
       );
 
-    console.log('scrollheight', scrollHeight)
-
     const backgroundTransition = useTransition(drawerStoreState.isOpen, {
         from: { opacity: 0 },
         enter: { 
