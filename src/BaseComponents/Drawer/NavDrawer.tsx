@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import drawerStore, { DrawerContentEnum, DrawerStoreState } from '../../stores/drawerStore';
 
 export type NavRoute = {
     label: string,
@@ -37,16 +38,27 @@ export const NavButton: React.FC<NavButtonProps> = (props) => {
 const NavDrawer: React.FC = () => {
     const navigate = useNavigate();
     const navDrawerClasses = navDrawerStyles()
+    const {setDrawerStoreState} = drawerStore(
+        (state: {setDrawerStoreState: any}) => ({
+            setDrawerStoreState: state.setDrawerStoreState
+        })
+    )
 
     const navRoutes: any[] = [
         {
             label: 'Navigate to Player Home',
-            onClick: () => {navigate('/player-home')},
+            onClick: () => {
+                setDrawerStoreState({isOpen: false, drawerContentEnum: undefined})
+                navigate('/player-home');
+            },
             text: 'Player',
         },
         {
             label: 'Navigate to Dungeon Master Home',
-            onClick: () => {navigate('/dm-home')},
+            onClick: () => {
+                setDrawerStoreState({isOpen: false, drawerContentEnum: undefined})
+                navigate('/dm-home')
+            },
             text: 'Dungeon Master',
         }
     ]
@@ -56,7 +68,10 @@ const NavDrawer: React.FC = () => {
             {
                 navRoutes.map((navRoute: NavRoute) => {
                     return (
-                        <NavButton navRoute={navRoute}/>
+                        <NavButton 
+                            navRoute={navRoute} 
+                            key={navRoute.label}
+                        />
                     )
                 })
             }

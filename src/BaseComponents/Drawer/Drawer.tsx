@@ -19,12 +19,22 @@ const Drawer: React.FC<DrawerProps> = (props) => {
         return window.innerWidth < 421;
     };
 
+    let scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
+
+    console.log('scrollheight', scrollHeight)
+
     const backgroundTransition = useTransition(drawerStoreState.isOpen, {
         from: { opacity: 0 },
-        enter: { opacity: 1,       
-          height: '95.5vh',
-          position: 'absolute',
-          zIndex: '99' },
+        enter: { 
+            opacity: 1,       
+            height: scrollHeight,
+            position: 'absolute',
+            top: 0,
+            zIndex: '99' },
         leave: { opacity: 0 },
         reverse: drawerStoreState.isOpen,
       })
@@ -33,7 +43,8 @@ const Drawer: React.FC<DrawerProps> = (props) => {
         from: { x: -1000 },
         enter: { 
           x: 0, 
-          position: 'absolute',
+          position: 'fixed',
+          top: 0,
           zIndex: '100' },
         leave: { x: -1000 },
         reverse: drawerStoreState.isOpen
@@ -46,8 +57,8 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                 <animated.div style={styles}>
                     <div 
                         style={{
-                        width: screenSizeFunction() ? '100vw' : '33vw', 
-                        height: '95.5vh', 
+                        width: screenSizeFunction() ? document.documentElement.clientWidth : '33vw', 
+                        height: window.innerHeight, 
                         backgroundColor: 'white', 
                         // opacity: .65,
                         zIndex: 100,
@@ -61,8 +72,8 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                 <animated.div style={styles}>
                     <div 
                         style={{
-                        width: '97.5vw', 
-                        height: '95.5vh', 
+                        width: document.documentElement.clientWidth, 
+                        height: scrollHeight, 
                         backgroundColor: 'black', 
                         opacity: .65,
                         zIndex: 99,
