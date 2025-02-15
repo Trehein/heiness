@@ -1,38 +1,11 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import React, { useEffect } from 'react'
-import { auth } from '../../fbConfig/fbConfig';
 import { useNavigate } from 'react-router';
-import Signup from '../Signup';
-import Login from '../Login';
+import { auth } from '../fbConfig/fbConfig';
+import Signup from './Signup';
+import Login from './Login';
 
-// import { auth } from '../../fbConfig/fbConfig'
-// import { useAuthIdToken } from "@react-query-firebase/auth";
-// import Authentication from '../Authentication/Authentication';
-// import RoleSelection from '../RoleSelection/RoleSelection';
-
-
-// landing with Auth
-// const Landing: React.FC = () => {
-//     // grab user info if necessary
-//     // const userQuery = useAuthUser(['user'], auth)
-//     // const user = userQuery.data;
-//     const tokenResult = useAuthIdToken(["token"], auth);
-
-//     return (
-//         <>
-//             {tokenResult.data?.token.token && 
-//                 <RoleSelection />
-//             }
-//             {tokenResult.data?.token.token === undefined && 
-//                 <Authentication />
-//             }
-//         </>
-//     )
-// }
-
-
-
-const Landing: React.FC = () => {
+const Auth: React.FC = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {               
@@ -45,7 +18,6 @@ const Landing: React.FC = () => {
         // An error happened.
         });
     }
-
 
     useEffect(()=>{
         onAuthStateChanged(auth, (user) => {
@@ -64,6 +36,8 @@ const Landing: React.FC = () => {
     
     }, [])
 
+    console.log('auth', auth.currentUser)
+
     return (
         <div>
             <h1>
@@ -80,4 +54,4 @@ const Landing: React.FC = () => {
     )
 }
 
-export default Landing
+export default Auth

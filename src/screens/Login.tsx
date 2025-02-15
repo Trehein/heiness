@@ -14,7 +14,8 @@ const Login: React.FC = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            navigate("/home")
+            // todo - update to push with auth
+            navigate("/")
             console.log(user);
         })
         .catch((error) => {

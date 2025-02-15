@@ -2,10 +2,13 @@ import { Route, Routes, useNavigate } from 'react-router';
 import { auth } from './fbConfig/fbConfig';
 import Signup from './screens/Signup';
 import Login from './screens/Login';
-import Landing from './screens/Landing/Landing';
 import { onAuthStateChanged } from 'firebase/auth';
 import Home from './screens/Home';
 import { useEffect } from 'react';
+import Auth from './screens/Auth';
+import NavBar from './components/NavBar/NavBar';
+import DrawerController from './Drawer/DrawerController';
+import { MyAppNav } from './components/NavBar/MyAppNav';
 
 function App() {
   const navigate = useNavigate();
@@ -17,7 +20,8 @@ function App() {
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
         console.log('user', uid)
-        navigate('/home')
+        // update for alt routing with auth
+        navigate('/')
         // ...
       } else {
         // User is signed out
@@ -32,9 +36,12 @@ function App() {
 
   return (
     <div style={{fontFamily: 'sans-serif', marginTop: 0}}>
+      <NavBar />
+      <DrawerController />
+      <MyAppNav />
       <Routes>
-        <Route path='/' element={<Landing />}/>
-        <Route path='/home' element={<Home />}/>
+        <Route path='/' element={<Home />}/>
+        <Route path='/auth' element={<Auth />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
       </Routes>
