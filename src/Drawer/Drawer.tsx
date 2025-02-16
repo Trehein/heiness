@@ -19,7 +19,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
         document.body.scrollHeight, document.documentElement.scrollHeight,
         document.body.offsetHeight, document.documentElement.offsetHeight,
         document.body.clientHeight, document.documentElement.clientHeight
-      );
+    );
 
     const backgroundTransition = useTransition(drawerState.isOpen, {
         from: { opacity: 0 },
@@ -66,7 +66,7 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                 <animated.div style={styles}>
                     <div 
                         style={{
-                        width: '99.5vw', 
+                        width: '100vw', 
                         height: scrollHeight, 
                         backgroundColor: 'black', 
                         opacity: .65,
