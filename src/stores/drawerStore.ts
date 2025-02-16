@@ -22,8 +22,8 @@ export interface DrawerStoreState {
 
 const drawerStore = create<DrawerStoreState>()((set) => ({
     drawerState: defaultDrawerState,
-    setDrawerState: (drawerStateParams: DrawerState) => set((state: DrawerStoreState) => ({ drawerState: drawerStateParams})),
-    resetDrawerState: () => set((state: DrawerStoreState) => ({ drawerState: defaultDrawerState}))
+    setDrawerState: (drawerStateParams: DrawerState) => set((_state: DrawerStoreState) => ({ drawerState: drawerStateParams})),
+    resetDrawerState: () => set((_state: DrawerStoreState) => ({ drawerState: defaultDrawerState}))
 }))
 
 export default drawerStore
