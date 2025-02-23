@@ -13,6 +13,7 @@ const Login: React.FC = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in
+            // @ts-ignore
             const user = userCredential.user;
             // todo - update to push with auth
             navigate("/")
