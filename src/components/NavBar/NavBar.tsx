@@ -10,8 +10,6 @@ const NavBar: React.FC = () => {
     const drawerState = drawerStore((state: DrawerStoreState) => state.drawerState)
     const setDrawerState = drawerStore((state: DrawerStoreState) => state.setDrawerState)
 
-    console.log(drawerState)
-
     return (
         <div style={navBarClasses.navBarContainer}>
             <div style={navBarClasses.iconButtonContainer}>

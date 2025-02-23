@@ -8,7 +8,7 @@ export type IconStyleWrapperProps = {
 
 const IconStyleWrapper: React.FC<IconStyleWrapperProps> = (props) => {
     const {styleParams, children} = props
-    console.log(styleParams)
+
     return (
         <IconContext.Provider value={styleParams}>
             {children}

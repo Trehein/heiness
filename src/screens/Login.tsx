@@ -16,12 +16,11 @@ const Login: React.FC = () => {
             const user = userCredential.user;
             // todo - update to push with auth
             navigate("/")
-            console.log(user);
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
+            console.error(errorCode, errorMessage)
         });
 
     }

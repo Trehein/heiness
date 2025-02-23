@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router';
+import { Route, Routes } from 'react-router';
 import { auth } from './fbConfig/fbConfig';
 import Signup from './screens/Signup';
 import Login from './screens/Login';
@@ -9,9 +9,10 @@ import Auth from './screens/Auth';
 import NavBar from './components/NavBar/NavBar';
 import DrawerController from './Drawer/DrawerController';
 import { MyAppNav } from './components/NavBar/MyAppNav';
+import TestCrud from './screens/TestCrud';
 
 function App() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user: any) => {
@@ -21,13 +22,12 @@ function App() {
         const uid = user.uid;
         console.log('user', uid)
         // update for alt routing with auth
-        navigate('/')
         // ...
       } else {
         // User is signed out
         // ...
         console.log('no user')
-        navigate('/')
+        // navigate('/')
       }
     });
   }, [auth])
@@ -44,6 +44,7 @@ function App() {
         <Route path='/auth' element={<Auth />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path='/testCrud' element={<TestCrud/>}/>
       </Routes>
     </div>
   )
