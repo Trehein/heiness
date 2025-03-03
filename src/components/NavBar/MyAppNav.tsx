@@ -6,6 +6,9 @@ export function MyAppNav() {
       <NavLink to="/" end>
         Home
       </NavLink>
+      <NavLink to='/contentCreator' end>
+        Content Creator
+      </NavLink>
     </nav>
   );
 }
