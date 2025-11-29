@@ -12,6 +12,7 @@ import { MyAppNav } from './components/NavBar/MyAppNav';
 import TestCrud from './screens/TestCrud';
 import ContentCreator from './screens/ContentCreator';
 import CreateCampaign from './screens/CreateCampaign';
+import WidgetScreen from './screens/WidgetScreen';
 
 function App() {
   // const navigate = useNavigate();
@@ -46,7 +47,8 @@ function App() {
         <Route path='/auth' element={<Auth />}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path='/contentCreator' element={<ContentCreator />} />
+        <Route path="/widgets" element={<WidgetScreen />}/>
+        <Route path='/contentCreator' element={<ContentCreator />}/>
         <Route path='/testCrud' element={<TestCrud/>}/>
         <Route path='/create/campaign' element={<CreateCampaign />}/>
       </Routes>
