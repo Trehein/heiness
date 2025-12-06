@@ -15,7 +15,8 @@ const replayabilityControllerStyles = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'column' as 'column'
+      flexDirection: 'column' as 'column',
+      overflow: 'auto'
     },
     replayabilityHeaderTextContainer: {
 
@@ -64,7 +65,6 @@ const mockReplayabilityData = [
 // todo - overlay against GENRE and ALL
 
 const ReplayabilityController: React.FC = () => {
-  console.log('replay', mockReplayabilityData)
   const styles = replayabilityControllerStyles()
 
   return (

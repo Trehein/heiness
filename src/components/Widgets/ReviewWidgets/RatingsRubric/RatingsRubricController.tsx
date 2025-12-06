@@ -1,6 +1,8 @@
 import React from 'react'
 
-const RubricController: React.FC = () => {
+const RatingsRubricController: React.FC = () => {
+
+  // genre + aesthetics + fun factor
   return (
     <div>
 
@@ -8,4 +10,4 @@ const RubricController: React.FC = () => {
   )
 }
 
-export default RubricController
+export default RatingsRubricController

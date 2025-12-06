@@ -77,7 +77,6 @@ const KindsOfFunController: React.FC = () => {
   const sortedData: KindsOfFunData[] = data.sort((a, b) => a.funPriority - b.funPriority)
 
   const KindOfFunDisplay: React.FC<{kindOfFunData: KindsOfFunData}> = ({kindOfFunData}) => {
-    console.log(kindOfFunData)
     return (
       <div className='kindOfFunDisplayContainer' style={styles.kindOfFunDisplayContainer}>
         <h3 className='kindOfFunText' style={styles.kindOfFunText}>
