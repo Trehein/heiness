@@ -27,7 +27,7 @@ const kindsOfFunStyles = () => {
     },
     kindOfFunText: {
       fontSize: '1.55em',
-      fontFamily: 'Bungee'
+      fontFamily: 'Alfa Slab One'
     },
     kindsOfFunTypesContainer: {
       margin: '0em auto'

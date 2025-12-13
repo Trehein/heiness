@@ -1,6 +1,6 @@
 import React from 'react'
 import mockgameData from '../../../../assets/mockGameData/mockGameData.json'
-import { CartesianGrid, Legend, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
 
 const scatterPlotControllerStyles = () => {
   return {
