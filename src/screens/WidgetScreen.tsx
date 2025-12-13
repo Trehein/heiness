@@ -4,6 +4,7 @@ import KindsOfFunController from '../components/Widgets/ReviewWidgets/KindsOfFun
 import ReplayabilityController from '../components/Widgets/ReviewWidgets/Replayability/ReplayabilityController'
 import ScatterPlotController from '../components/Widgets/ReviewWidgets/ScatterPlot/ScatterPlotController'
 import RatingsRubricController from '../components/Widgets/ReviewWidgets/RatingsRubric/RatingsRubricController'
+import FileUploadController from '../components/FileUpload/FileUploadController'
 
 const WidgetScreen: React.FC = () => {
 
@@ -25,6 +26,9 @@ const WidgetScreen: React.FC = () => {
         </div>
         <div className='ratingsRubricContainer' style={{width: '25%', height: '30%', border: '1px solid gold'}}>
           <RatingsRubricController />
+        </div>
+        <div className='fileUploadContainer' style={{width: '25%', height: '30%', border: '1px solid aqua'}}>
+          <FileUploadController />
         </div>
       </div>
     </div>

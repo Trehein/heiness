@@ -9,7 +9,7 @@ export const addDocToDb = async () => {
   try {
     const docRef = await addDoc(collection(firestore, "tester"), {
       first: "Ada",
-      last: "Lovelace",
+      last: "Poo",
       born: 1815
     });
     console.log("Document written with ID: ", docRef.id);
