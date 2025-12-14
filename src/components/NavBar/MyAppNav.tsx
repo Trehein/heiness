@@ -12,6 +12,9 @@ export function MyAppNav() {
       <NavLink to='/widgets' end>
         Widgets
       </NavLink>
+      <NavLink to='/reviews' end>
+        Reviews
+      </NavLink>
     </nav>
   );
 }

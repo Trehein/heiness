@@ -1,18 +1,10 @@
-import { Route, Routes } from 'react-router';
 import { auth } from './fbConfig/fbConfig';
-import Signup from './screens/Signup';
-import Login from './screens/Login';
 import { onAuthStateChanged } from 'firebase/auth';
-import Home from './screens/Home';
 import { useEffect } from 'react';
-import Auth from './screens/Auth';
 import NavBar from './components/NavBar/NavBar';
 import DrawerController from './Drawer/DrawerController';
 import { MyAppNav } from './components/NavBar/MyAppNav';
-import TestCrud from './screens/TestCrud';
-import ContentCreator from './screens/ContentCreator';
-import CreateCampaign from './screens/CreateCampaign';
-import WidgetScreen from './screens/WidgetScreen';
+import AnimatedRoutes from './animations/AnimatedRoutes';
 
 function App() {
   // const navigate = useNavigate();
@@ -38,11 +30,11 @@ function App() {
 
 
   return (
-    <div style={{fontFamily: 'sans-serif', marginTop: 0}}>
+    <div style={{fontFamily: 'sans-serif', marginTop: 0, width: '100vw'}}>
       <NavBar />
       <DrawerController />
       <MyAppNav />
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/auth' element={<Auth />}/>
         <Route path="/signup" element={<Signup/>}/>
@@ -51,7 +43,9 @@ function App() {
         <Route path='/contentCreator' element={<ContentCreator />}/>
         <Route path='/testCrud' element={<TestCrud/>}/>
         <Route path='/create/campaign' element={<CreateCampaign />}/>
-      </Routes>
+        <Route path='/reviews' element={<Reviews />}/>
+      </Routes> */}
+      <AnimatedRoutes />
     </div>
   )
 }
